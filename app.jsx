@@ -86,7 +86,6 @@ function Hero() {
               Inteligencia Artificial hasta el Derecho y los Negocios.
             </p>
             <div className="hero-meta">
-              <div>Materias<span>10 integradas</span></div>
               <div>Carreras<span>3 analizadas</span></div>
               <div>Equipo<span>6 integrantes</span></div>
             </div>
