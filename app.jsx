@@ -16,6 +16,7 @@ const SECTIONS = [
 { id: "derecho", label: "Derecho" },
 { id: "historia", label: "Historia" },
 { id: "ecologia", label: "Ecología" },
+{ id: "computerlab", label: "Computer Lab" },
 { id: "conclusion", label: "Conclusión" }];
 
 
@@ -257,6 +258,7 @@ function App() {
       <Derecho />
       <Historia />
       <Ecologia />
+      <ComputerLab />
       <Conclusion />
       <Fuentes />
       <Footer />

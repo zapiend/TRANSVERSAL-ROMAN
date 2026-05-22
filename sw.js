@@ -1,4 +1,4 @@
-const CACHE = "carreras-v1";
+const CACHE = "carreras-v2";
 const ASSETS = [
   "/",
   "/index.html",
@@ -15,6 +15,7 @@ const ASSETS = [
   "/derecho.jsx",
   "/historia.jsx",
   "/ecologia.jsx",
+  "/computerlab.jsx",
   "/manifest.json",
   "/assets/business-1.jpeg",
   "/assets/business-2.jpeg",
@@ -22,6 +23,7 @@ const ASSETS = [
   "/assets/business-4.jpeg",
   "/assets/ecologia-periodico.png",
   "/assets/literature-infografia.jpeg",
+  "/assets/computerlab-tabla.png",
   "/.image-slots.state.json"
 ];
 

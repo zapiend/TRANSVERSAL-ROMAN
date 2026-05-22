@@ -950,7 +950,16 @@ section[id] { scroll-margin-top: 90px; }
   .eco-grid { grid-template-columns: 1fr !important; }
   .fuentes-grid { grid-template-columns: 1fr !important; }
   .ck-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .lab-highlights { grid-template-columns: repeat(2, 1fr) !important; }
+  .lab-sources { grid-template-columns: 1fr !important; }
+  .lab-table { font-size: 13px; }
+  .lab-table th, .lab-table td { padding: 12px 14px !important; }
 }
 @media (max-width: 540px){
   .ck-grid { grid-template-columns: 1fr !important; }
+  .lab-highlights { grid-template-columns: 1fr !important; }
+  .lab-table thead { display: none; }
+  .lab-table, .lab-table tbody, .lab-table tr, .lab-table td { display: block; width: 100%; }
+  .lab-table tr { padding: 16px; border-bottom: 1px solid var(--line); }
+  .lab-table td { padding: 4px 0 !important; border: none !important; text-align: left !important; }
 }

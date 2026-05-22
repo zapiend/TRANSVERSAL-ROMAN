@@ -1,0 +1,3772 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carreras del Futuro · Proyecto Transversal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ Carreras del Futuro â€” proyecto transversal ============ */
+
+:root {
+  --bg: #f6f7f9;
+  --bg-elevated: #ffffff;
+  --ink: #0b1f3a;            /* deep navy ink */
+  --ink-2: #1a2f4f;
+  --muted: #5b6b82;
+  --muted-2: #8593a8;
+  --line: #e6e9ef;
+  --line-2: #d8dde6;
+
+  --navy: #0b1f3a;
+  --navy-2: #122c52;
+  --navy-soft: #eef2f9;
+
+  --green: #1f6b4f;
+  --green-2: #2d8568;
+  --green-soft: #e8f1ec;
+
+  --gold: #b8924a;
+  --gold-2: #d4ae65;
+  --gold-soft: #f6efe0;
+
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 36px;
+
+  --shadow-xs: 0 1px 2px rgba(11, 31, 58, 0.04), 0 1px 1px rgba(11, 31, 58, 0.03);
+  --shadow-sm: 0 4px 12px -4px rgba(11, 31, 58, 0.08), 0 2px 4px rgba(11, 31, 58, 0.04);
+  --shadow-md: 0 12px 32px -12px rgba(11, 31, 58, 0.18), 0 4px 12px -4px rgba(11, 31, 58, 0.06);
+  --shadow-lg: 0 30px 60px -25px rgba(11, 31, 58, 0.28), 0 12px 24px -8px rgba(11, 31, 58, 0.10);
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", "DM Serif Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+
+/* ----------------- subtle tech grid background ----------------- */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(11,31,58,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,31,58,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: -1px -1px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 80%);
+}
+
+/* ----------------- Layout helpers ----------------- */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+.container.narrow { max-width: 880px; }
+.container.wide   { max-width: 1340px; }
+
+section.cf-section {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+section.cf-section + section.cf-section {
+  border-top: 1px solid var(--line);
+}
+
+/* Decorative accent blobs â€” placed via ::before on tagged sections */
+.cf-section.accent-navy::before,
+.cf-section.accent-gold::before,
+.cf-section.accent-green::before {
+  content: "";
+  position: absolute;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.32;
+  pointer-events: none;
+  z-index: 0;
+}
+.cf-section.accent-navy::before  { background: radial-gradient(circle, #2c4675, transparent 65%); top: 5%; right: -120px; }
+.cf-section.accent-gold::before  { background: radial-gradient(circle, #d4ae65, transparent 65%); top: 20%; left: -160px; opacity: 0.22; }
+.cf-section.accent-green::before { background: radial-gradient(circle, #2d8568, transparent 65%); bottom: 5%; right: -140px; opacity: 0.18; }
+
+.cf-section.accent-navy::after,
+.cf-section.accent-gold::after,
+.cf-section.accent-green::after {
+  content: "";
+  position: absolute;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+}
+.cf-section.accent-navy::after  { background: radial-gradient(circle, #b8924a, transparent 65%); bottom: 8%; left: -120px; }
+.cf-section.accent-gold::after  { background: radial-gradient(circle, #2c4675, transparent 65%); bottom: 5%; right: -140px; }
+.cf-section.accent-green::after { background: radial-gradient(circle, #b8924a, transparent 65%); top: 8%; left: -160px; }
+
+/* Decorative big roman section number */
+.section-number {
+  position: absolute;
+  top: 80px;
+  right: 24px;
+  font-family: var(--font-display);
+  font-size: clamp(140px, 18vw, 220px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+.section-number.left { right: auto; left: 24px; }
+
+.cf-section .container { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 6px 12px 6px 10px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold-2);
+  box-shadow: 0 0 0 4px var(--gold-soft);
+}
+.eyebrow.green .dot { background: var(--green-2); box-shadow: 0 0 0 4px var(--green-soft); }
+.eyebrow.navy  .dot { background: var(--navy-2); box-shadow: 0 0 0 4px var(--navy-soft); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+  line-height: 1.05;
+}
+h1 { font-size: clamp(48px, 7vw, 96px); letter-spacing: -0.025em; }
+h2 { font-size: clamp(36px, 4.4vw, 60px); letter-spacing: -0.02em; }
+h3 { font-size: clamp(22px, 2vw, 28px); font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+h4 { font-size: 17px; font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.005em; line-height: 1.3; }
+p { margin: 0 0 1em; color: var(--ink-2); }
+p.lead { font-size: 19px; line-height: 1.6; color: var(--ink-2); }
+
+.section-head { margin-bottom: 64px; max-width: 760px; }
+.section-head h2 { margin-top: 18px; }
+.section-head p.lead { margin-top: 18px; color: var(--muted); }
+
+em.serif {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* ----------------- NAV ----------------- */
+.nav {
+  position: fixed;
+  top: 16px; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none;
+}
+.nav-inner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 8px 8px 18px;
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: saturate(150%) blur(18px);
+  -webkit-backdrop-filter: saturate(150%) blur(18px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  max-width: calc(100vw - 32px);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  padding-right: 14px; margin-right: 4px;
+  border-right: 1px solid var(--line);
+  font-weight: 600; font-size: 14px;
+  flex-shrink: 0;
+}
+.nav-brand .logo-mark {
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 30% 30%, var(--gold-2), var(--gold) 40%, var(--navy) 80%);
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+.nav-brand .logo-mark::after {
+  content: "";
+  position: absolute; inset: 5px;
+  border-radius: 5px;
+  border: 1.2px solid rgba(255,255,255,0.35);
+}
+.nav-links {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  /* fade edges so users can see there's more to scroll */
+  mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-2);
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-links a:hover { background: var(--bg); color: var(--navy); }
+.nav-links a.active { background: var(--navy); color: white; }
+
+/* tighten at medium widths so more items fit before scrolling */
+@media (max-width: 1280px) {
+  .nav-inner { padding: 7px 7px 7px 14px; gap: 4px; }
+  .nav-links a { padding: 7px 11px; font-size: 12.5px; }
+  .nav-brand { font-size: 13.5px; padding-right: 12px; }
+}
+@media (max-width: 920px) {
+  .nav-brand span:not(.logo-mark) { display: none; }
+  .nav-brand { padding-right: 8px; margin-right: 0; }
+}
+
+/* ----------------- HERO ----------------- */
+.hero {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 920px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+}
+
+.hero h1 .accent { color: var(--gold); font-style: italic; font-weight: 400; }
+.hero p.lead { max-width: 540px; margin-top: 28px; color: var(--muted); }
+.hero-meta {
+  display: flex; gap: 28px; margin-top: 40px; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hero-meta div span {
+  display: block;
+  color: var(--ink); font-family: var(--font-sans);
+  font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none;
+  margin-top: 4px;
+}
+
+/* hero visual card */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(155deg, var(--navy) 0%, var(--navy-2) 60%, #1c3a6a 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  color: #e6ecf6;
+  padding: 32px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.hero-visual::before {
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, #000 20%, transparent 75%);
+}
+.hero-visual::after {
+  content:""; position:absolute; right:-80px; bottom:-80px;
+  width: 320px; height: 320px; border-radius: 50%;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 60%);
+  opacity: 0.45; filter: blur(10px);
+}
+.hero-visual .badge-row {
+  position: relative; z-index: 2;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.hero-visual .badge {
+  font-family: var(--font-mono); font-size: 11px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  letter-spacing: 0.1em;
+}
+.hero-visual h3.viz-title {
+  position: relative; z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.05;
+  color: white;
+  letter-spacing: -0.01em;
+}
+.hero-visual h3.viz-title em { color: var(--gold-2); font-style: italic; }
+.hero-visual .signal {
+  position: relative; z-index: 2;
+  display: flex; align-items: flex-end; gap: 4px; height: 60px;
+}
+.hero-visual .signal i {
+  display: block; width: 6px; background: var(--gold-2);
+  border-radius: 3px;
+  opacity: 0.9;
+  animation: signal 2.4s ease-in-out infinite;
+}
+@keyframes signal {
+  0%, 100% { transform: scaleY(0.4); transform-origin: bottom; }
+  50% { transform: scaleY(1); transform-origin: bottom; }
+}
+
+/* ----------------- generic cards ----------------- */
+.card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card.hov:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.card .kicker {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ----------------- INTEGRANTES ----------------- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 820px){ .team-grid { grid-template-columns: repeat(2,1fr);} }
+@media (max-width: 480px){ .team-grid { grid-template-columns: 1fr;} }
+.member {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.member:hover { transform: translateY(-2px); border-color: var(--gold-2); }
+.member .avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 18px;
+  color: white; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--navy), #2a4a7a);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
+}
+.member:nth-child(2n) .avatar { background: linear-gradient(135deg, var(--green), #3a8a6c); }
+.member:nth-child(3n) .avatar { background: linear-gradient(135deg, var(--gold), var(--gold-2)); }
+.member .name { font-weight: 600; font-size: 14.5px; line-height: 1.25; }
+.member .role { font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+
+/* ----------------- TOPIC CARDS (3 carreras) ----------------- */
+.topics-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  margin-top: 48px;
+}
+@media (max-width: 820px){ .topics-grid { grid-template-columns: 1fr; } }
+.topic {
+  position: relative; padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 320px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.topic:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.topic .num {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  color: var(--muted); text-transform: uppercase;
+}
+.topic h3 { font-family: var(--font-display); font-weight: 400; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em; margin-top: 8px; }
+.topic p { font-size: 14.5px; color: var(--muted); }
+.topic .arrow {
+  margin-top: 24px; display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.topic.law    { background: linear-gradient(180deg, white, var(--navy-soft)); }
+.topic.ai     { background: linear-gradient(180deg, white, var(--gold-soft)); }
+.topic.biz    { background: linear-gradient(180deg, white, var(--green-soft)); }
+.topic.law .num    { color: var(--navy); }
+.topic.ai .num     { color: var(--gold); }
+.topic.biz .num    { color: var(--green); }
+.topic .glyph {
+  position:absolute; right:-30px; top:-30px;
+  width:160px; height:160px; border-radius:50%;
+  opacity: 0.12; pointer-events:none;
+}
+.topic.law .glyph  { background: radial-gradient(circle, var(--navy), transparent 70%); }
+.topic.ai .glyph   { background: radial-gradient(circle, var(--gold-2), transparent 70%); }
+.topic.biz .glyph  { background: radial-gradient(circle, var(--green-2), transparent 70%); }
+
+/* ----------------- IMAGE PLACEHOLDER ----------------- */
+.img-slot {
+  position: relative;
+  width: 100%;
+  background:
+    repeating-linear-gradient(135deg, #eef1f6 0 12px, #f6f8fb 12px 24px);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--radius);
+  display: grid; place-items: center;
+  color: var(--muted-2);
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  min-height: 280px;
+  overflow: hidden;
+}
+.img-slot.dark {
+  background:
+    repeating-linear-gradient(135deg, #0f2546 0 12px, #122a4d 12px 24px);
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.6);
+}
+.img-slot .ratio-16-9 { padding-top: 56.25%; }
+.img-slot .label {
+  text-align: center; padding: 12px 18px;
+  background: var(--bg-elevated); border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* ----------------- Two-column compositions ----------------- */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.two-col.wide-left { grid-template-columns: 1.3fr 1fr; }
+.two-col.wide-right { grid-template-columns: 1fr 1.3fr; }
+@media (max-width: 820px){
+  .two-col, .two-col.wide-left, .two-col.wide-right { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ----------------- INFO LISTS (psicologÃ­a) ----------------- */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+@media (max-width: 720px){ .feature-grid { grid-template-columns: 1fr; } }
+.feature {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+.feature .tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 4px 8px; border-radius: 6px;
+  background: var(--navy-soft); color: var(--navy);
+  margin-bottom: 14px;
+}
+.feature.green .tag { background: var(--green-soft); color: var(--green); }
+.feature.gold .tag { background: var(--gold-soft); color: var(--gold); }
+.feature h4 { margin-bottom: 6px; }
+.feature p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+
+/* ----------------- Temperament test ----------------- */
+.test-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 720px){ .test-card { padding: 32px 24px; } }
+.test-card::before {
+  content:""; position:absolute; left:0; top:0; height: 3px; width: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--gold), var(--green));
+  transform-origin: left;
+}
+.test-progress {
+  height: 4px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+.test-progress > div {
+  height: 100%;
+  background: linear-gradient(90deg, var(--navy), var(--gold-2));
+  transition: width 0.5s cubic-bezier(.22,.61,.36,1);
+  border-radius: 999px;
+}
+.test-meta {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 16px;
+}
+.test-question {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.2vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 32px;
+  min-height: 1.6em;
+}
+.test-options { display: flex; flex-direction: column; gap: 10px; }
+.test-option {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+  text-align: left;
+  font-size: 15.5px; color: var(--ink-2);
+  transition: all 0.18s ease;
+  width: 100%;
+}
+.test-option:hover {
+  border-color: var(--navy);
+  background: var(--navy-soft);
+  transform: translateY(-1px);
+}
+.test-option .marker {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 8px;
+  border: 1px solid var(--line-2);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: 11.5px;
+  color: var(--muted);
+  background: var(--bg);
+  transition: all 0.18s ease;
+}
+.test-option:hover .marker { background: var(--navy); color: white; border-color: var(--navy); }
+
+.test-controls {
+  display: flex; justify-content: space-between; margin-top: 28px;
+}
+.btn {
+  appearance: none; border: 1px solid var(--line);
+  background: var(--bg-elevated); color: var(--ink-2);
+  padding: 10px 18px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 500;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.15s ease;
+}
+.btn:hover { border-color: var(--navy); color: var(--navy); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn.primary { background: var(--navy); color: white; border-color: var(--navy); }
+.btn.primary:hover { background: var(--navy-2); border-color: var(--navy-2); }
+.btn.gold { background: var(--gold); color: white; border-color: var(--gold); }
+.btn.gold:hover { background: var(--gold-2); border-color: var(--gold-2); }
+.btn.ghost { background: transparent; }
+
+/* result */
+.test-result {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 36px;
+  align-items: center;
+}
+@media (max-width: 760px){ .test-result { grid-template-columns: 1fr; } }
+
+.result-orb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: white;
+  text-align: center;
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+}
+.result-orb h3 { color: white; font-family: var(--font-display); font-weight: 400; font-size: 42px; letter-spacing: -0.02em; }
+.result-orb .pct {
+  font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  opacity: 0.8; margin-top: 6px;
+}
+.result-orb.SanguÃ­neo { background: linear-gradient(135deg, #d4825c 0%, #b8924a 100%); }
+.result-orb.ColÃ©rico { background: linear-gradient(135deg, #8b2a3a 0%, #b54451 100%); }
+.result-orb.FlemÃ¡tico { background: linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%); }
+.result-orb.MelancÃ³lico { background: linear-gradient(135deg, var(--navy) 0%, #2c4675 100%); }
+
+.result-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.result-bar { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.result-bar .track { height: 6px; background: var(--line); border-radius: 99px; margin-top: 6px; overflow: hidden; }
+.result-bar .fill { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(.22,.61,.36,1); }
+.result-bar.SanguÃ­neo .fill { background: #b8924a; }
+.result-bar.ColÃ©rico .fill { background: #b54451; }
+.result-bar.FlemÃ¡tico .fill { background: var(--green-2); }
+.result-bar.MelancÃ³lico .fill { background: var(--navy-2); }
+
+/* ----------------- CONTABILIDAD ----------------- */
+.fin-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+@media (max-width: 920px){ .fin-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px){ .fin-grid { grid-template-columns: 1fr; } }
+.stat {
+  padding: 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.stat .label {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px;
+}
+.stat .value {
+  font-family: var(--font-display); font-size: 36px; line-height: 1; letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.stat .value .currency { font-family: var(--font-sans); font-size: 18px; color: var(--muted); font-weight: 500; vertical-align: 9px; margin-right: 2px; }
+.stat .sub { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.stat.accent-gold { background: linear-gradient(180deg, white, var(--gold-soft)); border-color: rgba(184,146,74,0.2); }
+.stat.accent-green { background: linear-gradient(180deg, white, var(--green-soft)); border-color: rgba(31,107,79,0.2); }
+.stat.accent-navy { background: linear-gradient(180deg, white, var(--navy-soft)); border-color: rgba(11,31,58,0.2); }
+
+.table-pro {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.table-pro th, .table-pro td {
+  text-align: left;
+  padding: 16px 22px;
+  font-size: 14.5px;
+  border-bottom: 1px solid var(--line);
+}
+.table-pro th {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted); font-weight: 500;
+  background: var(--bg);
+}
+.table-pro tr:last-child td { border-bottom: none; }
+.table-pro tr.total td { font-weight: 600; background: var(--navy-soft); color: var(--navy); }
+.table-pro td.num { font-family: var(--font-mono); font-size: 13.5px; text-align: right; color: var(--ink-2); }
+
+/* employment cards */
+.emp-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+@media (max-width: 920px){ .emp-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px){ .emp-grid { grid-template-columns: 1fr; } }
+.emp {
+  padding: 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  position: relative;
+  overflow: hidden;
+}
+.emp .emp-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+.emp ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.emp ul li { display: flex; gap: 8px; align-items: baseline; font-size: 13.5px; color: var(--ink-2); }
+.emp ul li::before {
+  content:""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+  flex-shrink: 0; transform: translateY(-2px);
+}
+.emp ul li.con::before { background: var(--muted-2); }
+
+/* ----------------- CAMBRIDGE ----------------- */
+.essay {
+  position: relative;
+  padding: 56px 56px 56px 72px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+@media (max-width: 720px){ .essay { padding: 36px 28px; } }
+.essay::before {
+  content: "EN";
+  position: absolute;
+  top: 32px; left: -1px;
+  background: var(--navy);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.16em;
+  padding: 6px 14px;
+  border-radius: 0 6px 6px 0;
+}
+.essay h3 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 36px; letter-spacing: -0.02em; line-height: 1.1;
+  margin-bottom: 8px;
+}
+.essay .question {
+  font-family: var(--font-display); font-style: italic;
+  color: var(--gold); font-size: 18px; margin-bottom: 30px;
+}
+.essay p { font-size: 16px; color: var(--ink-2); line-height: 1.75; max-width: 68ch; }
+.essay p + p { margin-top: 14px; }
+.essay p::first-letter {  }
+.essay p.first::first-letter {
+  font-family: var(--font-display);
+  font-size: 56px;
+  float: left;
+  line-height: 0.85;
+  padding: 8px 12px 0 0;
+  color: var(--navy);
+}
+
+/* ----------------- CALCULO ----------------- */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 820px){ .chart-grid { grid-template-columns: 1fr; } }
+.chart-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-xs);
+}
+.chart-card .chart-meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 16px;
+  padding-bottom: 16px; border-bottom: 1px solid var(--line);
+}
+.chart-card .gnum {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold);
+}
+.chart-card h4 { font-size: 16px; margin: 6px 0 0; }
+.chart-card .axes {
+  display: flex; gap: 16px; font-family: var(--font-mono); font-size: 11px;
+  color: var(--muted-2); margin-top: 12px;
+}
+.chart-card .axes span b { color: var(--ink-2); font-weight: 500; }
+
+/* ----------------- DERECHO ----------------- */
+.law-list {
+  display: grid; grid-template-columns: 1fr; gap: 0;
+  border-top: 1px solid var(--line);
+}
+.law-list .law-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+@media (max-width: 720px){
+  .law-list .law-row { grid-template-columns: 1fr; gap: 8px; }
+}
+.law-list .law-row h4 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 22px; letter-spacing: -0.01em; color: var(--navy); }
+.law-list .law-row p { color: var(--muted); margin: 0; font-size: 15px; }
+.law-list .law-row .law-tag {
+  display:inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-top: 6px;
+}
+
+.risk-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
+}
+@media (max-width: 820px){ .risk-grid { grid-template-columns: 1fr; } }
+.risk {
+  padding: 24px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.risk .pill {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--navy-soft); color: var(--navy);
+  padding: 4px 10px; border-radius: 999px;
+  margin-bottom: 14px;
+}
+.risk h4 { margin-bottom: 8px; }
+.risk p { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.risk .ex {
+  background: var(--bg);
+  border: 1px dashed var(--line-2);
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+.risk .ex b { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; color: var(--gold); display: block; margin-bottom: 4px; }
+
+/* arco rights */
+.arco {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+@media (max-width: 720px){ .arco { grid-template-columns: repeat(2,1fr); } }
+.arco-item {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  text-align: center;
+}
+.arco-item .letter {
+  font-family: var(--font-display); font-size: 56px; line-height: 1;
+  color: var(--gold); letter-spacing: -0.02em;
+}
+.arco-item .word { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 8px; color: var(--muted); }
+
+/* ----------------- CONCLUSION + SOURCES ----------------- */
+.conclusion {
+  background: var(--navy);
+  border-radius: var(--radius-xl);
+  padding: 80px;
+  color: rgba(255,255,255,0.85);
+  position: relative; overflow: hidden;
+}
+@media (max-width: 720px){ .conclusion { padding: 48px 28px; } }
+.conclusion::before {
+  content:""; position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 80% 20%, #000 20%, transparent 80%);
+}
+.conclusion::after {
+  content:""; position:absolute; left:-100px; bottom:-100px; width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold), transparent 70%);
+  opacity: 0.18; filter: blur(20px);
+}
+.conclusion h2 { color: white; }
+.conclusion .eyebrow {
+  background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); color: rgba(255,255,255,0.7);
+}
+.conclusion p { color: rgba(255,255,255,0.78); font-size: 17px; line-height: 1.7; max-width: 70ch; position: relative; z-index: 2; }
+
+.sources {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  font-family: var(--font-mono); font-size: 12px;
+}
+@media (max-width: 720px){ .sources { grid-template-columns: 1fr; } }
+.source {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  color: var(--muted);
+  display: flex; gap: 10px; align-items: center;
+}
+.source .idx { color: var(--gold); }
+
+/* ----------------- FOOTER ----------------- */
+.footer {
+  padding: 56px 0 40px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+.footer .container {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+}
+
+/* ----------------- ANIMATIONS ----------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(.22,.61,.36,1), transform 0.8s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+
+/* anchor offset for fixed nav */
+section[id] { scroll-margin-top: 90px; }
+
+/* responsive for new sections */
+@media (max-width: 820px){
+  .bus-row { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .bus-row > div { order: initial !important; }
+  .hist-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .hist-aside { border-right: none !important; padding-right: 0 !important; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+  .speaking-grid { grid-template-columns: 1fr !important; }
+  .eco-grid { grid-template-columns: 1fr !important; }
+  .fuentes-grid { grid-template-columns: 1fr !important; }
+  .ck-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .lab-highlights { grid-template-columns: repeat(2, 1fr) !important; }
+  .lab-sources { grid-template-columns: 1fr !important; }
+  .lab-table { font-size: 13px; }
+  .lab-table th, .lab-table td { padding: 12px 14px !important; }
+}
+@media (max-width: 540px){
+  .ck-grid { grid-template-columns: 1fr !important; }
+  .lab-highlights { grid-template-columns: 1fr !important; }
+  .lab-table thead { display: none; }
+  .lab-table, .lab-table tbody, .lab-table tr, .lab-table td { display: block; width: 100%; }
+  .lab-table tr { padding: 16px; border-bottom: 1px solid var(--line); }
+  .lab-table td { padding: 4px 0 !important; border: none !important; text-align: left !important; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+/**
+ * <image-slot> â€” user-fillable image placeholder.
+ *
+ * Drop this into a deck, mockup, or page wherever you want the user to
+ * supply an image. You control the slot's shape and size; the user fills it
+ * by dragging an image file onto it (or clicking to browse). The dropped
+ * image persists across reloads via a .image-slots.state.json sidecar â€”
+ * same read-via-fetch / write-via-window.omelette pattern as
+ * design_canvas.jsx, so the filled slot shows on share links, downloaded
+ * zips, and PPTX export. Outside the omelette runtime the slot is read-only.
+ *
+ * The host bridge only allows sidecar writes at the project root, so the
+ * HTML that uses this component is assumed to live at the project root too
+ * (same constraint as design_canvas.jsx).
+ *
+ * Attributes:
+ *   id           Persistence key. REQUIRED for the drop to survive reload â€”
+ *                every slot on the page needs a distinct id.
+ *   shape        'rect' | 'rounded' | 'circle' | 'pill'   (default 'rounded')
+ *                'circle' applies 50% border-radius; on a non-square slot
+ *                that's an ellipse â€” set equal width and height for a true
+ *                circle.
+ *   radius       Corner radius in px for 'rounded'.       (default 12)
+ *   mask         Any CSS clip-path value. Overrides `shape` â€” use this for
+ *                hexagons, blobs, arbitrary polygons.
+ *   fit          object-fit: cover | contain | fill.       (default 'cover')
+ *                With cover (the default) double-clicking the filled slot
+ *                enters a reframe mode: the whole image spills past the mask
+ *                (translucent outside, opaque inside), drag to reposition,
+ *                corner-drag to scale. The crop persists alongside the image
+ *                in the sidecar. contain/fill stay static.
+ *   position     object-position for fit=contain|fill.     (default '50% 50%')
+ *   placeholder  Empty-state caption.                      (default 'Drop an image')
+ *   src          Optional initial/fallback image URL. A user drop overrides
+ *                it; clearing the drop reveals src again.
+ *
+ * Size and layout come from ordinary CSS on the element â€” width/height
+ * inline or from a parent grid â€” so it composes with any layout.
+ *
+ * Usage:
+ *   <script src="image-slot.js"></script>
+ *   <image-slot id="hero"   style="width:800px;height:450px" shape="rounded" radius="20"
+ *               placeholder="Drop a hero image"></image-slot>
+ *   <image-slot id="avatar" style="width:120px;height:120px" shape="circle"></image-slot>
+ *   <image-slot id="kite"   style="width:300px;height:300px"
+ *               mask="polygon(50% 0, 100% 50%, 50% 100%, 0 50%)"></image-slot>
+ */
+
+(() => {
+  const STATE_FILE = '.image-slots.state.json';
+  // 2Ã— a ~600px slot in a 1920-wide deck â€” retina-sharp without making the
+  // sidecar enormous. A 1200px WebP at q=0.85 is ~150-300KB.
+  const MAX_DIM = 1200;
+  // Raster formats only. SVG is excluded (can carry script; createImageBitmap
+  // on SVG blobs is inconsistent). GIF is excluded because the canvas
+  // re-encode keeps only the first frame, so an animated GIF would silently
+  // go still â€” better to reject than surprise.
+  const ACCEPT = ['image/png', 'image/jpeg', 'image/webp', 'image/avif'];
+
+  // â”€â”€ Shared sidecar store â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // One fetch + immediate write-on-change for every <image-slot> on the
+  // page. Reads via fetch() so viewing works anywhere the HTML and sidecar
+  // are served together; writes go through window.omelette.writeFile, which
+  // the host allowlists to *.state.json basenames only.
+  const subs = new Set();
+  let slots = {};
+  // ids explicitly cleared before the sidecar fetch resolved â€” otherwise
+  // the merge below can't tell "never set" from "just deleted" and would
+  // resurrect the sidecar's stale value.
+  const tombstones = new Set();
+  let loaded = false;
+  let loadP = null;
+
+  function load() {
+    if (loadP) return loadP;
+    loadP = fetch(STATE_FILE)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        // Merge: sidecar loses to any in-memory change that raced ahead of
+        // the fetch (drop or clear) so neither is clobbered by hydration.
+        if (j && typeof j === 'object') {
+          const merged = Object.assign({}, j, slots);
+          // A framing-only write that raced ahead of hydration must not
+          // drop a user image that's only on disk â€” inherit u from the
+          // sidecar for any in-memory entry that lacks one.
+          for (const k in slots) {
+            if (merged[k] && !merged[k].u && j[k]) {
+              merged[k].u = typeof j[k] === 'string' ? j[k] : j[k].u;
+            }
+          }
+          for (const id of tombstones) delete merged[id];
+          slots = merged;
+        }
+        tombstones.clear();
+      })
+      .catch(() => {})
+      .then(() => { loaded = true; subs.forEach((fn) => fn()); });
+    return loadP;
+  }
+
+  // Serialize writes so two near-simultaneous drops on different slots
+  // can't reorder at the backend and leave the sidecar with only the
+  // first. A save requested mid-flight just marks dirty and re-fires on
+  // completion with the then-current slots.
+  let saving = false;
+  let saveDirty = false;
+  function save() {
+    if (saving) { saveDirty = true; return; }
+    const w = window.omelette && window.omelette.writeFile;
+    if (!w) return;
+    saving = true;
+    Promise.resolve(w(STATE_FILE, JSON.stringify(slots)))
+      .catch(() => {})
+      .then(() => { saving = false; if (saveDirty) { saveDirty = false; save(); } });
+  }
+
+  const S_MAX = 5;
+  const clampS = (s) => Math.max(1, Math.min(S_MAX, s));
+
+  // Normalize a stored slot value. Pre-reframe sidecars stored a bare
+  // data-URL string; newer ones store {u, s, x, y}. Either shape is valid.
+  function getSlot(id) {
+    const v = slots[id];
+    if (!v) return null;
+    return typeof v === 'string' ? { u: v, s: 1, x: 0, y: 0 } : v;
+  }
+
+  function setSlot(id, val) {
+    if (!id) return;
+    if (val) { slots[id] = val; tombstones.delete(id); }
+    else { delete slots[id]; if (!loaded) tombstones.add(id); }
+    subs.forEach((fn) => fn());
+    // A drop is rare + high-value â€” write immediately so nav-away can't lose
+    // it. Gate on the initial read so we don't overwrite a sidecar we haven't
+    // merged yet; the merge in load() keeps this change once the read lands.
+    if (loaded) save(); else load().then(save);
+  }
+
+  // â”€â”€ Image downscale â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // Encode through a canvas so the sidecar carries resized bytes, not the
+  // raw upload. Longest side is capped at 2Ã— the slot's rendered width
+  // (retina) and at MAX_DIM. WebP keeps alpha and is ~10Ã— smaller than PNG
+  // for photos, so there's no need for per-image format picking.
+  async function toDataUrl(file, targetW) {
+    const bitmap = await createImageBitmap(file);
+    try {
+      const cap = Math.min(MAX_DIM, Math.max(1, Math.round(targetW * 2)) || MAX_DIM);
+      const scale = Math.min(1, cap / Math.max(bitmap.width, bitmap.height));
+      const w = Math.max(1, Math.round(bitmap.width * scale));
+      const h = Math.max(1, Math.round(bitmap.height * scale));
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(bitmap, 0, 0, w, h);
+      return canvas.toDataURL('image/webp', 0.85);
+    } finally {
+      bitmap.close && bitmap.close();
+    }
+  }
+
+  // â”€â”€ Custom element â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  const stylesheet =
+    ':host{display:inline-block;position:relative;vertical-align:top;' +
+    '  font:13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(0,0,0,.55);width:240px;height:160px}' +
+    '.frame{position:absolute;inset:0;overflow:hidden;background:rgba(0,0,0,.04)}' +
+    // .frame img (clipped) and .spill (unclipped ghost + handles) share the
+    // same left/top/width/height in frame-%, computed by _applyView(), so the
+    // inside-mask crop and the outside-mask spill stay pixel-aligned.
+    '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
+    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    // Reframe mode (double-click): the full image spills past the mask. The
+    // spill layer is sized to the IMAGE bounds so its corners are where the
+    // resize handles belong. The ghost <img> inside is translucent; the real
+    // clipped <img> underneath shows the opaque in-mask crop.
+    '.spill{position:absolute;transform:translate(-50%,-50%);display:none;z-index:1;' +
+    '  cursor:grab;touch-action:none}' +
+    ':host([data-panning]) .spill{cursor:grabbing}' +
+    '.spill .ghost{position:absolute;inset:0;width:100%;height:100%;opacity:.35;' +
+    '  pointer-events:none;-webkit-user-drag:none;user-select:none;' +
+    '  box-shadow:0 0 0 1px rgba(0,0,0,.2),0 12px 32px rgba(0,0,0,.2)}' +
+    '.spill .handle{position:absolute;width:12px;height:12px;border-radius:50%;' +
+    '  background:#fff;box-shadow:0 0 0 1.5px #c96442,0 1px 3px rgba(0,0,0,.3);' +
+    '  transform:translate(-50%,-50%)}' +
+    '.spill .handle[data-c=nw]{left:0;top:0;cursor:nwse-resize}' +
+    '.spill .handle[data-c=ne]{left:100%;top:0;cursor:nesw-resize}' +
+    '.spill .handle[data-c=sw]{left:0;top:100%;cursor:nesw-resize}' +
+    '.spill .handle[data-c=se]{left:100%;top:100%;cursor:nwse-resize}' +
+    ':host([data-reframe]){z-index:10}' +
+    ':host([data-reframe]) .spill{display:block}' +
+    ':host([data-reframe]) .frame{box-shadow:0 0 0 2px #c96442}' +
+    '.empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+    '  justify-content:center;gap:6px;text-align:center;padding:12px;box-sizing:border-box;' +
+    '  cursor:pointer;user-select:none}' +
+    '.empty svg{opacity:.45}' +
+    '.empty .cap{max-width:90%;font-weight:500;letter-spacing:.01em}' +
+    '.empty .sub{font-size:11px}' +
+    '.empty .sub u{text-underline-offset:2px;text-decoration-color:rgba(0,0,0,.25)}' +
+    '.empty:hover .sub u{color:rgba(0,0,0,.75);text-decoration-color:currentColor}' +
+    ':host([data-over]) .frame{outline:2px solid #c96442;outline-offset:-2px;' +
+    '  background:rgba(201,100,66,.10)}' +
+    '.ring{position:absolute;inset:0;pointer-events:none;border:1.5px dashed rgba(0,0,0,.25);' +
+    '  transition:border-color .12s}' +
+    ':host([data-over]) .ring{border-color:#c96442}' +
+    ':host([data-filled]) .ring{display:none}' +
+    // Controls sit BELOW the mask (top:100%), absolutely positioned so the
+    // author-declared slot height is unaffected. The gap is padding, not a
+    // top offset, so the hover target stays contiguous with the frame.
+    '.ctl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;' +
+    '  display:flex;gap:6px;opacity:0;pointer-events:none;transition:opacity .12s;z-index:2;' +
+    '  white-space:nowrap}' +
+    ':host([data-filled][data-editable]:hover) .ctl,:host([data-reframe]) .ctl' +
+    '  {opacity:1;pointer-events:auto}' +
+    '.ctl button{appearance:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;' +
+    '  background:rgba(0,0,0,.65);color:#fff;font:11px/1 system-ui,-apple-system,sans-serif;' +
+    '  backdrop-filter:blur(6px)}' +
+    '.ctl button:hover{background:rgba(0,0,0,.8)}' +
+    '.err{position:absolute;left:8px;bottom:8px;right:8px;color:#b3261e;font-size:11px;' +
+    '  background:rgba(255,255,255,.85);padding:4px 6px;border-radius:5px;pointer-events:none}';
+
+  const icon =
+    '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+    'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
+    '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>' +
+    '<path d="m21 15-5-5L5 21"/></svg>';
+
+  class ImageSlot extends HTMLElement {
+    static get observedAttributes() {
+      return ['shape', 'radius', 'mask', 'fit', 'position', 'placeholder', 'src', 'id'];
+    }
+
+    constructor() {
+      super();
+      const root = this.attachShadow({ mode: 'open' });
+      // .spill and .ctl sit OUTSIDE .frame so overflow:hidden + border-radius
+      // on the frame (circle, pill, rounded) can't clip them.
+      root.innerHTML =
+        '<style>' + stylesheet + '</style>' +
+        '<div class="frame" part="frame">' +
+        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        '  <div class="empty" part="empty">' + icon +
+        '    <div class="cap"></div>' +
+        '    <div class="sub">or <u>browse files</u></div></div>' +
+        '  <div class="ring" part="ring"></div>' +
+        '</div>' +
+        '<div class="spill">' +
+        '  <img class="ghost" alt="" draggable="false">' +
+        '  <div class="handle" data-c="nw"></div><div class="handle" data-c="ne"></div>' +
+        '  <div class="handle" data-c="sw"></div><div class="handle" data-c="se"></div>' +
+        '</div>' +
+        '<div class="ctl"><button data-act="replace" title="Replace image">Replace</button>' +
+        '  <button data-act="clear" title="Remove image">Remove</button></div>' +
+        '<input type="file" accept="' + ACCEPT.join(',') + '" hidden>';
+      this._frame = root.querySelector('.frame');
+      this._ring = root.querySelector('.ring');
+      this._img = root.querySelector('.frame img');
+      this._empty = root.querySelector('.empty');
+      this._cap = root.querySelector('.cap');
+      this._sub = root.querySelector('.sub');
+      this._spill = root.querySelector('.spill');
+      this._ghost = root.querySelector('.ghost');
+      this._err = null;
+      this._input = root.querySelector('input');
+      this._depth = 0;
+      this._gen = 0;
+      this._view = { s: 1, x: 0, y: 0 };
+      this._subFn = () => this._render();
+      // Shadow-DOM listeners live with the shadow DOM â€” bound once here so
+      // disconnect/reconnect (e.g. React remount) doesn't stack handlers.
+      this._empty.addEventListener('click', () => this._input.click());
+      root.addEventListener('click', (e) => {
+        const act = e.target && e.target.getAttribute && e.target.getAttribute('data-act');
+        if (act === 'replace') { this._exitReframe(true); this._input.click(); }
+        if (act === 'clear') {
+          this._exitReframe(false);
+          this._gen++;
+          this._local = null;
+          if (this.id) setSlot(this.id, null); else this._render();
+        }
+      });
+      this._input.addEventListener('change', () => {
+        const f = this._input.files && this._input.files[0];
+        if (f) this._ingest(f);
+        this._input.value = '';
+      });
+      // naturalWidth/Height aren't known until load â€” re-apply so the cover
+      // baseline is computed from real dimensions, not the 100%Ã—100% fallback.
+      this._img.addEventListener('load', () => this._applyView());
+      // Gated on editable + fit=cover so share links and contain/fill slots
+      // stay static.
+      this.addEventListener('dblclick', (e) => {
+        if (!this.hasAttribute('data-editable') || !this._reframes()) return;
+        e.preventDefault();
+        if (this.hasAttribute('data-reframe')) this._exitReframe(true);
+        else this._enterReframe();
+      });
+      // Pan + resize both originate on the spill layer. A handle pointerdown
+      // drives an aspect-locked resize anchored at the opposite corner; any
+      // other pointerdown on the spill pans. Offsets are frame-% so a
+      // reframed slot survives responsive resize / PPTX export.
+      this._spill.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0 || !this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        e.stopPropagation();
+        this._spill.setPointerCapture(e.pointerId);
+        const rect = this.getBoundingClientRect();
+        const fw = rect.width || 1, fh = rect.height || 1;
+        const corner = e.target.getAttribute && e.target.getAttribute('data-c');
+        let move;
+        if (corner) {
+          // Resize about the OPPOSITE corner. Viewport-px throughout (rect
+          // fw/fh, not clientWidth) so the math survives a transform:scale()
+          // ancestor â€” deck_stage renders slides scaled-to-fit.
+          const iw = this._img.naturalWidth || 1, ih = this._img.naturalHeight || 1;
+          const base = Math.max(fw / iw, fh / ih);
+          const sx = corner.includes('e') ? 1 : -1;
+          const sy = corner.includes('s') ? 1 : -1;
+          const s0 = this._view.s;
+          const w0 = iw * base * s0, h0 = ih * base * s0;
+          const cx0 = (50 + this._view.x) / 100 * fw;
+          const cy0 = (50 + this._view.y) / 100 * fh;
+          const ox = cx0 - sx * w0 / 2, oy = cy0 - sy * h0 / 2;
+          const diag0 = Math.hypot(w0, h0);
+          const ux = sx * w0 / diag0, uy = sy * h0 / diag0;
+          move = (ev) => {
+            const proj = (ev.clientX - rect.left - ox) * ux +
+                         (ev.clientY - rect.top - oy) * uy;
+            const s = clampS(s0 * proj / diag0);
+            const d = diag0 * s / s0;
+            this._view.s = s;
+            this._view.x = (ox + ux * d / 2) / fw * 100 - 50;
+            this._view.y = (oy + uy * d / 2) / fh * 100 - 50;
+            this._clampView();
+            this._applyView();
+          };
+        } else {
+          this.setAttribute('data-panning', '');
+          const start = { px: e.clientX, py: e.clientY, x: this._view.x, y: this._view.y };
+          move = (ev) => {
+            this._view.x = start.x + (ev.clientX - start.px) / fw * 100;
+            this._view.y = start.y + (ev.clientY - start.py) / fh * 100;
+            this._clampView();
+            this._applyView();
+          };
+        }
+        const up = () => {
+          try { this._spill.releasePointerCapture(e.pointerId); } catch {}
+          this._spill.removeEventListener('pointermove', move);
+          this._spill.removeEventListener('pointerup', up);
+          this._spill.removeEventListener('pointercancel', up);
+          this.removeAttribute('data-panning');
+          this._dragUp = null;
+        };
+        // Stashed so _exitReframe (Escape / outside-click mid-drag) can
+        // tear the capture + listeners down synchronously.
+        this._dragUp = up;
+        this._spill.addEventListener('pointermove', move);
+        this._spill.addEventListener('pointerup', up);
+        this._spill.addEventListener('pointercancel', up);
+      });
+      // Wheel zoom stays available inside reframe mode as a trackpad nicety â€”
+      // zooms toward the cursor (offset' = cursorÂ·(1-k) + offsetÂ·k).
+      this.addEventListener('wheel', (e) => {
+        if (!this.hasAttribute('data-reframe')) return;
+        e.preventDefault();
+        const r = this.getBoundingClientRect();
+        const cx = (e.clientX - r.left) / r.width * 100 - 50;
+        const cy = (e.clientY - r.top) / r.height * 100 - 50;
+        const prev = this._view.s;
+        const next = clampS(prev * Math.pow(1.0015, -e.deltaY));
+        if (next === prev) return;
+        const k = next / prev;
+        this._view.s = next;
+        this._view.x = cx * (1 - k) + this._view.x * k;
+        this._view.y = cy * (1 - k) + this._view.y * k;
+        this._clampView();
+        this._applyView();
+      }, { passive: false });
+    }
+
+    connectedCallback() {
+      // Warn once per page â€” an id-less slot works for the session but
+      // cannot persist, and two id-less slots would share nothing.
+      if (!this.id && !ImageSlot._warned) {
+        ImageSlot._warned = true;
+        console.warn('<image-slot> without an id will not persist its dropped image.');
+      }
+      this.addEventListener('dragenter', this);
+      this.addEventListener('dragover', this);
+      this.addEventListener('dragleave', this);
+      this.addEventListener('drop', this);
+      subs.add(this._subFn);
+      // width%/height% in _applyView encode the frame aspect at call time â€”
+      // a host resize (responsive grid, pane divider) would stretch the
+      // image until the next _render. Re-render on size change: _render()
+      // re-seeds _view from stored before clamp/apply, so a shrinkâ†’grow
+      // cycle round-trips instead of ratcheting x/y toward the narrower
+      // frame's clamp range.
+      this._ro = new ResizeObserver(() => this._render());
+      this._ro.observe(this);
+      load();
+      this._render();
+    }
+
+    disconnectedCallback() {
+      subs.delete(this._subFn);
+      this.removeEventListener('dragenter', this);
+      this.removeEventListener('dragover', this);
+      this.removeEventListener('dragleave', this);
+      this.removeEventListener('drop', this);
+      if (this._ro) { this._ro.disconnect(); this._ro = null; }
+      this._exitReframe(false);
+    }
+
+    _enterReframe() {
+      if (this.hasAttribute('data-reframe')) return;
+      this.setAttribute('data-reframe', '');
+      this._applyView();
+      // Close on click outside (the spill handler stopPropagation()s so
+      // in-image drags don't reach this) and on Escape. Listeners are held
+      // on the instance so _exitReframe / disconnectedCallback can detach
+      // exactly what was attached.
+      this._outside = (e) => {
+        if (e.composedPath && e.composedPath().includes(this)) return;
+        this._exitReframe(true);
+      };
+      this._esc = (e) => { if (e.key === 'Escape') this._exitReframe(true); };
+      document.addEventListener('pointerdown', this._outside, true);
+      document.addEventListener('keydown', this._esc, true);
+    }
+
+    _exitReframe(commit) {
+      if (!this.hasAttribute('data-reframe')) return;
+      if (this._dragUp) this._dragUp();
+      this.removeAttribute('data-reframe');
+      this.removeAttribute('data-panning');
+      if (this._outside) document.removeEventListener('pointerdown', this._outside, true);
+      if (this._esc) document.removeEventListener('keydown', this._esc, true);
+      this._outside = this._esc = null;
+      if (commit) this._commitView();
+    }
+
+    attributeChangedCallback() { if (this.shadowRoot) this._render(); }
+
+    // handleEvent â€” one listener object for all four drag events keeps the
+    // add/remove symmetric and the depth counter correct.
+    handleEvent(e) {
+      if (e.type === 'dragenter' || e.type === 'dragover') {
+        // Without preventDefault the browser never fires 'drop'.
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+        if (e.type === 'dragenter') this._depth++;
+        this.setAttribute('data-over', '');
+      } else if (e.type === 'dragleave') {
+        // dragenter/leave fire for every descendant crossing â€” count depth
+        // so hovering the icon inside the empty state doesn't flicker.
+        if (--this._depth <= 0) { this._depth = 0; this.removeAttribute('data-over'); }
+      } else if (e.type === 'drop') {
+        e.preventDefault();
+        e.stopPropagation();
+        this._depth = 0;
+        this.removeAttribute('data-over');
+        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+        if (f) this._ingest(f);
+      }
+    }
+
+    async _ingest(file) {
+      this._setError(null);
+      if (!file || ACCEPT.indexOf(file.type) < 0) {
+        this._setError('Drop a PNG, JPEG, WebP, or AVIF image.');
+        return;
+      }
+      // toDataUrl can take hundreds of ms on a large photo. A Clear or a
+      // newer drop during that window would be clobbered when this await
+      // resumes â€” bump + capture a generation so stale encodes bail.
+      const gen = ++this._gen;
+      try {
+        const w = this.clientWidth || this.offsetWidth || MAX_DIM;
+        const url = await toDataUrl(file, w);
+        if (gen !== this._gen) return;
+        // Only exit reframe once the new image is in hand â€” a rejected type
+        // or decode failure leaves the in-progress crop untouched.
+        this._exitReframe(false);
+        const val = { u: url, s: 1, x: 0, y: 0 };
+        setSlot(this.id || '', val);
+        // Keep a session-local copy for id-less slots so the drop still
+        // shows, even though it cannot persist.
+        if (!this.id) { this._local = val; this._render(); }
+      } catch (err) {
+        if (gen !== this._gen) return;
+        this._setError('Could not read that image.');
+        console.warn('<image-slot> ingest failed:', err);
+      }
+    }
+
+    _setError(msg) {
+      if (this._err) { this._err.remove(); this._err = null; }
+      if (!msg) return;
+      const d = document.createElement('div');
+      d.className = 'err'; d.textContent = msg;
+      this.shadowRoot.appendChild(d);
+      this._err = d;
+      setTimeout(() => { if (this._err === d) { d.remove(); this._err = null; } }, 3000);
+    }
+
+    // Reframing (pan/resize) is only meaningful for fit=cover â€” contain/fill
+    // keep the old object-fit path and double-click is a no-op.
+    _reframes() {
+      return this.hasAttribute('data-filled') &&
+        (this.getAttribute('fit') || 'cover') === 'cover';
+    }
+
+    // Cover-baseline geometry, shared by clamp/apply/resize. Null until the
+    // img has loaded (naturalWidth is 0 before that) or when the slot has no
+    // layout box â€” ResizeObserver fires with a 0Ã—0 rect under display:none,
+    // and clamping against a degenerate 1Ã—1 frame would silently pull the
+    // stored pan toward zero.
+    _geom() {
+      const iw = this._img.naturalWidth, ih = this._img.naturalHeight;
+      const fw = this.clientWidth, fh = this.clientHeight;
+      if (!iw || !ih || !fw || !fh) return null;
+      return { iw, ih, fw, fh, base: Math.max(fw / iw, fh / ih) };
+    }
+
+    _clampView() {
+      // Pan range on each axis is half the overflow past the frame edge.
+      const g = this._geom();
+      if (!g) return;
+      const mx = Math.max(0, (g.iw * g.base * this._view.s / g.fw - 1) * 50);
+      const my = Math.max(0, (g.ih * g.base * this._view.s / g.fh - 1) * 50);
+      this._view.x = Math.max(-mx, Math.min(mx, this._view.x));
+      this._view.y = Math.max(-my, Math.min(my, this._view.y));
+    }
+
+    _applyView() {
+      const g = this._geom();
+      const fit = this.getAttribute('fit') || 'cover';
+      if (fit !== 'cover' || !g) {
+        // Non-cover, or dimensions not known yet (before img load).
+        this._img.style.width = '100%';
+        this._img.style.height = '100%';
+        this._img.style.left = '50%';
+        this._img.style.top = '50%';
+        this._img.style.objectFit = fit;
+        this._img.style.objectPosition = this.getAttribute('position') || '50% 50%';
+        return;
+      }
+      // Cover baseline: img fills the frame on its tighter axis at s=1, so
+      // pan works immediately on the overflowing axis without zooming first.
+      // Width/height and left/top are all frame-% â€” depends only on the
+      // frame aspect ratio, so a responsive resize keeps the same crop. The
+      // spill layer mirrors the same box so its corners = image corners.
+      const k = g.base * this._view.s;
+      const w = (g.iw * k / g.fw * 100) + '%';
+      const h = (g.ih * k / g.fh * 100) + '%';
+      const l = (50 + this._view.x) + '%';
+      const t = (50 + this._view.y) + '%';
+      this._img.style.width = w; this._img.style.height = h;
+      this._img.style.left = l; this._img.style.top = t;
+      this._img.style.objectFit = '';
+      this._spill.style.width = w; this._spill.style.height = h;
+      this._spill.style.left = l; this._spill.style.top = t;
+    }
+
+    _commitView() {
+      const v = { s: this._view.s, x: this._view.x, y: this._view.y };
+      if (this._userUrl) v.u = this._userUrl;
+      // Framing-only (no u) persists too so an author-src slot remembers its
+      // crop; clearing the sidecar still falls through to src=.
+      if (this.id) setSlot(this.id, v);
+      else { this._local = v; }
+    }
+
+    _render() {
+      // Shape / mask. Presets use border-radius so the dashed ring can
+      // follow the rounded outline; clip-path is only applied for an
+      // explicit `mask` (the ring is hidden there since a rectangle
+      // dashed border chopped by an arbitrary polygon looks broken).
+      const mask = this.getAttribute('mask');
+      const shape = (this.getAttribute('shape') || 'rounded').toLowerCase();
+      let radius = '';
+      if (shape === 'circle') radius = '50%';
+      else if (shape === 'pill') radius = '9999px';
+      else if (shape === 'rounded') {
+        const n = parseFloat(this.getAttribute('radius'));
+        radius = (Number.isFinite(n) ? n : 12) + 'px';
+      }
+      this._frame.style.borderRadius = mask ? '' : radius;
+      this._frame.style.clipPath = mask || '';
+      this._ring.style.borderRadius = mask ? '' : radius;
+      this._ring.style.display = mask ? 'none' : '';
+
+      // Controls and reframe entry gate on this so share links stay read-only.
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      this.toggleAttribute('data-editable', editable);
+      this._sub.style.display = editable ? '' : 'none';
+
+      // Content. The sidecar is also writable by the agent's write_file
+      // tool, so its value isn't guaranteed canvas-originated â€” only accept
+      // data:image/ URLs from it. The `src` attribute is author-controlled
+      // (Claude wrote it into the HTML) so it passes through unchanged.
+      let stored = this.id ? getSlot(this.id) : this._local;
+      if (stored && stored.u && !/^data:image\//i.test(stored.u)) stored = null;
+      const srcAttr = this.getAttribute('src') || '';
+      this._userUrl = (stored && stored.u) || null;
+      const url = this._userUrl || srcAttr;
+      // Don't clobber an in-flight reframe with a store-triggered re-render.
+      if (!this.hasAttribute('data-reframe')) {
+        this._view = {
+          s: stored && Number.isFinite(stored.s) ? clampS(stored.s) : 1,
+          x: stored && Number.isFinite(stored.x) ? stored.x : 0,
+          y: stored && Number.isFinite(stored.y) ? stored.y : 0,
+        };
+      }
+      this._cap.textContent = this.getAttribute('placeholder') || 'Drop an image';
+      // Toggle via style.display â€” the [hidden] attribute alone loses to
+      // the display:flex / display:block rules in the stylesheet above.
+      if (url) {
+        if (this._img.getAttribute('src') !== url) {
+          this._img.src = url;
+          this._ghost.src = url;
+        }
+        this._img.style.display = 'block';
+        this._empty.style.display = 'none';
+        this.setAttribute('data-filled', '');
+        this._clampView();
+        this._applyView();
+      } else {
+        this._img.style.display = 'none';
+        this._img.removeAttribute('src');
+        this._ghost.removeAttribute('src');
+        this._empty.style.display = 'flex';
+        this.removeAttribute('data-filled');
+      }
+    }
+  }
+
+  if (!customElements.get('image-slot')) {
+    customElements.define('image-slot', ImageSlot);
+  }
+})();
+
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+/* eslint-disable */
+/* PsicologÃ­a â€” career-match test: which of the 3 careers (Derecho / IA / Negocios) fits you best */
+
+const CAREERS = {
+  "Derecho": {
+    color: "#0b1f3a",
+    accent: "#2c4675",
+    short: "Justicia Â· ArgumentaciÃ³n Â· Sociedad",
+    desc: "Tu mente busca orden, justicia y argumentos sÃ³lidos. Te interesa cÃ³mo se regulan las cosas, defender causas y resolver conflictos con palabras. Encajas en un mundo donde la tecnologÃ­a necesita reglas, Ã©tica y supervisiÃ³n humana.",
+    fortalezas: ["ArgumentaciÃ³n", "Pensamiento crÃ­tico", "Compromiso Ã©tico"],
+    label: "Eres perfil de"
+  },
+  "IngenierÃ­a en IA": {
+    color: "#b8924a",
+    accent: "#d4ae65",
+    short: "LÃ³gica Â· Datos Â· InnovaciÃ³n",
+    desc: "Te emociona resolver problemas complejos con tecnologÃ­a. Te atraen los datos, los sistemas inteligentes y construir cosas que antes no existÃ­an. Tu lugar estÃ¡ en el centro de la revoluciÃ³n digital â€” diseÃ±ando los modelos y herramientas del futuro.",
+    fortalezas: ["LÃ³gica-matemÃ¡tica", "Curiosidad tÃ©cnica", "Capacidad de aprender rÃ¡pido"],
+    label: "Eres perfil de"
+  },
+  "Negocios": {
+    color: "#1f6b4f",
+    accent: "#2d8568",
+    short: "Estrategia Â· Liderazgo Â· Mercado",
+    desc: "Piensas en tÃ©rminos de oportunidad, equipos y resultados. Te atrae construir empresas, gestionar recursos y conectar ideas con mercados. En la economÃ­a digital, eres quien transforma una buena idea en un negocio sostenible.",
+    fortalezas: ["Liderazgo", "VisiÃ³n estratÃ©gica", "ComunicaciÃ³n"],
+    label: "Eres perfil de"
+  }
+};
+
+const QUESTIONS = [
+{
+  q: "Cuando ves una noticia sobre IA, lo primero que piensas esâ€¦",
+  options: [
+  ["Â¿QuÃ© leyes deberÃ­an regular esto?", "Derecho"],
+  ["Â¿CÃ³mo estÃ¡ construido por dentro?", "IngenierÃ­a en IA"],
+  ["Â¿QuÃ© oportunidad de negocio hay aquÃ­?", "Negocios"]]
+
+},
+{
+  q: "En un proyecto en equipo prefieresâ€¦",
+  options: [
+  ["Defender la postura y argumentar por quÃ© es correcta.", "Derecho"],
+  ["Construir el prototipo tÃ©cnico.", "IngenierÃ­a en IA"],
+  ["Coordinar al equipo y presentarlo al jurado.", "Negocios"]]
+
+},
+{
+  q: "Tu materia favorita normalmente esâ€¦",
+  options: [
+  ["Historia, Ã©tica o filosofÃ­a.", "Derecho"],
+  ["MatemÃ¡ticas, programaciÃ³n o fÃ­sica.", "IngenierÃ­a en IA"],
+  ["EconomÃ­a, marketing o emprendimiento.", "Negocios"]]
+
+},
+{
+  q: "Tu habilidad mÃ¡s fuerte esâ€¦",
+  options: [
+  ["Escribir y argumentar con claridad.", "Derecho"],
+  ["Resolver problemas lÃ³gicos y tÃ©cnicos.", "IngenierÃ­a en IA"],
+  ["Convencer, negociar y vender ideas.", "Negocios"]]
+
+},
+{
+  q: "Si tuvieras que elegir un trabajo de veranoâ€¦",
+  options: [
+  ["Apoyar en un despacho o ONG.", "Derecho"],
+  ["Aprender a programar o entrenar un modelo de IA.", "IngenierÃ­a en IA"],
+  ["Trabajar en una startup o vendiendo algo propio.", "Negocios"]]
+
+},
+{
+  q: "Tu personalidad se parece mÃ¡s aâ€¦",
+  options: [
+  ["AnalÃ­tica y reflexiva.", "Derecho"],
+  ["Curiosa y tÃ©cnica.", "IngenierÃ­a en IA"],
+  ["Sociable y emprendedora.", "Negocios"]]
+
+},
+{
+  q: "Â¿QuÃ© problema del mundo te gustarÃ­a resolver?",
+  options: [
+  ["Injusticias sociales y falta de derechos.", "Derecho"],
+  ["Limitaciones tecnolÃ³gicas en salud o ciencia.", "IngenierÃ­a en IA"],
+  ["Falta de oportunidades econÃ³micas para la gente.", "Negocios"]]
+
+},
+{
+  q: "En una junta normalmente eres quienâ€¦",
+  options: [
+  ["Hace las preguntas difÃ­ciles.", "Derecho"],
+  ["Propone una soluciÃ³n tÃ©cnica.", "IngenierÃ­a en IA"],
+  ["Decide quÃ© hacemos y cÃ³mo seguimos.", "Negocios"]]
+
+},
+{
+  q: "Lo que mÃ¡s te emociona del futuro esâ€¦",
+  options: [
+  ["Que existan reglas claras para la IA y la tecnologÃ­a.", "Derecho"],
+  ["Construir sistemas inteligentes nuevos.", "IngenierÃ­a en IA"],
+  ["Crear empresas que aprovechen la tecnologÃ­a.", "Negocios"]]
+
+},
+{
+  q: "Tu mayor talento acadÃ©mico esâ€¦",
+  options: [
+  ["Leer mucho y argumentar mejor.", "Derecho"],
+  ["Modelos, fÃ³rmulas y cÃ³digo.", "IngenierÃ­a en IA"],
+  ["Liderar equipos y administrar recursos.", "Negocios"]]
+
+},
+{
+  q: "Te imaginas a los 30 aÃ±os trabajando enâ€¦",
+  options: [
+  ["Un despacho, juzgado u organismo internacional.", "Derecho"],
+  ["Un laboratorio de IA o una empresa de tecnologÃ­a.", "IngenierÃ­a en IA"],
+  ["Tu propia empresa o un puesto directivo.", "Negocios"]]
+
+},
+{
+  q: "Frente a la IA, te interesa mÃ¡sâ€¦",
+  options: [
+  ["Sus lÃ­mites Ã©ticos y legales.", "Derecho"],
+  ["CÃ³mo se construye y se mejora.", "IngenierÃ­a en IA"],
+  ["CÃ³mo monetizarla y escalarla.", "Negocios"]]
+
+},
+{
+  q: "Tu manera de estudiar esâ€¦",
+  options: [
+  ["Leer a fondo y tomar notas detalladas.", "Derecho"],
+  ["Practicar ejercicios y resolver problemas.", "IngenierÃ­a en IA"],
+  ["Hacer resÃºmenes y discutirlos con otros.", "Negocios"]]
+
+},
+{
+  q: "Â¿QuÃ© te molesta mÃ¡s en un proyecto?",
+  options: [
+  ["Que no se respeten las reglas o los acuerdos.", "Derecho"],
+  ["Que algo no funcione bien tÃ©cnicamente.", "IngenierÃ­a en IA"],
+  ["Que se pierda tiempo y oportunidades.", "Negocios"]]
+
+},
+{
+  q: "Si pudieras elegir un solo superpoder profesionalâ€¦",
+  options: [
+  ["Argumentar para que la justicia siempre gane.", "Derecho"],
+  ["Construir cualquier sistema inteligente que imagine.", "IngenierÃ­a en IA"],
+  ["Detectar antes que nadie el prÃ³ximo gran negocio.", "Negocios"]]
+
+}];
+
+
+function CareerTest() {
+  const { useState, useMemo } = React;
+  const [step, setStep] = useState(-1);
+  const [answers, setAnswers] = useState([]);
+
+  const scores = useMemo(() => {
+    const s = { "Derecho": 0, "IngenierÃ­a en IA": 0, "Negocios": 0 };
+    answers.forEach((a) => {if (a) s[a] += 1;});
+    return s;
+  }, [answers]);
+
+  const winner = useMemo(() => {
+    let best = "IngenierÃ­a en IA",val = -1;
+    for (const k of Object.keys(scores)) if (scores[k] > val) {val = scores[k];best = k;}
+    return best;
+  }, [scores]);
+
+  const choose = (career) => {
+    const next = [...answers];
+    next[step] = career;
+    setAnswers(next);
+    setTimeout(() => {
+      if (step < QUESTIONS.length - 1) setStep(step + 1);else
+      setStep(QUESTIONS.length);
+    }, 220);
+  };
+
+  const reset = () => {setAnswers([]);setStep(-1);};
+
+  // INTRO
+  if (step === -1) {
+    return (
+      <div className="test-card reveal">
+        <div className="test-meta">
+          <span>Test Â· PsicologÃ­a</span>
+          <span>{QUESTIONS.length} preguntas Â· ~3 min</span>
+        </div>
+        <h3 className="test-question" style={{ marginBottom: 16 }}>
+          Â¿CuÃ¡l de las 3 carreras<br />
+          <em className="serif">es mÃ¡s para ti?</em>
+        </h3>
+        <p style={{ color: "var(--muted)", fontSize: 16, marginBottom: 32, maxWidth: "58ch" }}>
+          Responde {QUESTIONS.length} preguntas rÃ¡pidas y descubre cuÃ¡l de las tres
+          carreras del futuro analizadas en este proyecto â€”Derecho, IngenierÃ­a en
+          Inteligencia Artificial o Negociosâ€” encaja mejor con tu manera de pensar,
+          tu personalidad y tus talentos.
+        </p>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          {Object.entries(CAREERS).map(([k, v]) =>
+          <div key={k} style={{
+            display: "flex", alignItems: "center", gap: 10,
+            padding: "8px 14px 8px 8px",
+            border: "1px solid var(--line)",
+            borderRadius: 999,
+            fontSize: 13.5,
+            fontFamily: "var(--font-mono)",
+            letterSpacing: "0.04em",
+            color: "var(--muted)"
+          }}>
+              <span style={{
+              width: 22, height: 22, borderRadius: "50%",
+              background: v.color,
+              display: "inline-block"
+            }}></span>
+              {k}
+            </div>
+          )}
+        </div>
+        <div className="test-controls" style={{ marginTop: 32 }}>
+          <span></span>
+          <button className="btn primary" onClick={() => setStep(0)}>
+            Empezar el test â†’
+          </button>
+        </div>
+      </div>);
+
+  }
+
+  // RESULT
+  if (step === QUESTIONS.length) {
+    const total = QUESTIONS.length;
+    const pct = (k) => Math.round(scores[k] / total * 100);
+    const sorted = Object.keys(CAREERS).sort((a, b) => scores[b] - scores[a]);
+    const t = CAREERS[winner];
+
+    return (
+      <div className="test-card reveal">
+        <div className="test-meta">
+          <span>Resultado</span>
+          <span>{total} de {total} respondidas</span>
+        </div>
+
+        <div className="test-result">
+          <div className="result-orb" style={{ background: `linear-gradient(135deg, ${t.color} 0%, ${t.accent} 100%)` }}>
+            <div>
+              <div className="pct">{t.label}</div>
+              <h3 style={{ fontSize: winner === "IngenierÃ­a en IA" ? 30 : 38, lineHeight: 1.05 }}>{winner}</h3>
+              <div className="pct" style={{ marginTop: 8 }}>{pct(winner)}% Â· carrera ideal</div>
+            </div>
+          </div>
+
+          <div>
+            <div style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.16em", textTransform: "uppercase",
+              color: "var(--muted)", marginBottom: 12
+            }}>{t.short}</div>
+            <h3 style={{ fontSize: 22, marginBottom: 12 }}>Tu perfil</h3>
+            <p style={{ color: "var(--ink-2)", fontSize: 15.5, lineHeight: 1.65 }}>
+              {t.desc}
+            </p>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 16 }}>
+              {t.fortalezas.map((f) =>
+              <span key={f} style={{
+                fontSize: 12, fontFamily: "var(--font-mono)",
+                padding: "5px 11px", borderRadius: 999,
+                background: "var(--bg)", border: "1px solid var(--line)",
+                color: "var(--ink-2)"
+              }}>{f}</span>
+              )}
+            </div>
+
+            <div className="result-bars">
+              {sorted.map((k) => {
+                const c = CAREERS[k].color;
+                return (
+                  <div key={k} className="result-bar">
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <span>{k}</span>
+                      <span>{pct(k)}%</span>
+                    </div>
+                    <div className="track">
+                      <div className="fill" style={{ width: `${pct(k)}%`, background: c }}></div>
+                    </div>
+                  </div>);
+
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="test-controls">
+          <button className="btn ghost" onClick={reset}>â† Volver a empezar</button>
+          <a href="#calculo" className="btn primary">Continuar al siguiente mÃ³dulo â†’</a>
+        </div>
+      </div>);
+
+  }
+
+  // QUESTION
+  const q = QUESTIONS[step];
+  const progress = step / QUESTIONS.length * 100;
+
+  return (
+    <div className="test-card reveal">
+      <div className="test-progress"><div style={{ width: `${progress}%` }}></div></div>
+      <div className="test-meta">
+        <span>Pregunta {String(step + 1).padStart(2, "0")} / {String(QUESTIONS.length).padStart(2, "0")}</span>
+        <span>{Math.round(progress)}% completado</span>
+      </div>
+      <h3 className="test-question">{q.q}</h3>
+      <div className="test-options">
+        {q.options.map(([text, career], i) =>
+        <button key={i} className="test-option" onClick={() => choose(career)}>
+            <span className="marker">{String.fromCharCode(65 + i)}</span>
+            <span>{text}</span>
+          </button>
+        )}
+      </div>
+      <div className="test-controls">
+        <button className="btn ghost" disabled={step === 0} onClick={() => setStep(Math.max(0, step - 1))}>â† AtrÃ¡s</button>
+        <button className="btn ghost" onClick={reset}>Reiniciar</button>
+      </div>
+    </div>);
+
+}
+
+function Psicologia() {
+  return (
+    <section id="psicologia" className="cf-section accent-gold" style={{ background: "linear-gradient(180deg, transparent 0%, #fafbfd 30%, #fafbfd 80%, transparent 100%)" }}>
+      <div className="container wide">
+        <span className="section-number left">III</span>
+        <div className="section-head reveal">
+          <div className="eyebrow"><span className="dot"></span> PsicologÃ­a</div>
+          <h2>Â¿QuÃ© carrera del futuro<br />
+            es <em className="serif">para ti?</em></h2>
+          <p className="lead">
+            En psicologÃ­a analizamos cÃ³mo la personalidad â€”pensamientos, emociones y
+            comportamientosâ€” determina en quÃ© carrera profesional puede destacar cada
+            persona. Personalidad, temperamento y carÃ¡cter forman tres capas que juntas
+            explican por quÃ© cada quien encuentra su propio lugar profesional. Haz el
+            test y descubre cuÃ¡l de las tres carreras estudiadas se ajusta mÃ¡s a ti.
+          </p>
+        </div>
+
+        {/* Three concept cards */}
+        <div className="feature-grid reveal" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginBottom: 64 }}>
+          <div className="feature">
+            <span className="tag">Personalidad</span>
+            <h4>Lo que te hace Ãºnico</h4>
+            <p>Conjunto de pensamientos, emociones y comportamientos que diferencian a cada persona y orientan tu vocaciÃ³n profesional.</p>
+          </div>
+          <div className="feature green">
+            <span className="tag">Temperamento</span>
+            <h4>Tu base biolÃ³gica</h4>
+            <p>CÃ³mo reaccionas emocionalmente desde que naces. Influye en si te concentras en lo tÃ©cnico, en lo legal o en lo estratÃ©gico.</p>
+          </div>
+          <div className="feature gold">
+            <span className="tag">CarÃ¡cter</span>
+            <h4>Lo que construyes</h4>
+            <p>Se forma con educaciÃ³n, experiencias y valores â€” claves para escoger una carrera que vaya con quien eres y quieres ser.</p>
+          </div>
+        </div>
+
+        {/* TEST */}
+        <div className="reveal" style={{ marginBottom: 80 }}>
+          <CareerTest />
+        </div>
+
+        {/* Habilidades requeridas */}
+        <div className="section-head reveal" style={{ marginBottom: 36, marginTop: 32 }}>
+          <div className="eyebrow green"><span className="dot"></span> Habilidades transversales</div>
+          <h2 style={{ fontSize: "clamp(28px, 3.4vw, 44px)" }}>Lo que cualquier carrera del futuro<br />
+            <em className="serif">te va a pedir.</em></h2>
+        </div>
+
+        <div className="feature-grid reveal" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          {[
+          ["Pensamiento lÃ³gico", "Sea derecho, IA o negocios â€” todas exigen analizar problemas con orden y argumentos."],
+          ["Creatividad", "Las profesiones del futuro se reinventan constantemente: ideas nuevas son la ventaja."],
+          ["ResoluciÃ³n de problemas", "Cada carrera enfrentarÃ¡ casos sin precedentes que habrÃ¡ que resolver desde cero."],
+          ["AdaptaciÃ³n tecnolÃ³gica", "La tecnologÃ­a cambia cada aÃ±o. Aprender continuamente no es opcional para ninguna profesiÃ³n."],
+          ["Trabajo en equipo", "Nadie construye solo. Ingenieros, abogados y empresarios trabajan en redes interdisciplinarias."],
+          ["ComunicaciÃ³n digital", "Explicar bien tus ideas â€”tÃ©cnicas, legales o de negocioâ€” es la habilidad mÃ¡s subestimada."]].
+          map(([t, d], i) =>
+          <div key={t} className="feature" style={{ borderRadius: "var(--radius)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                <span style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.14em", color: "var(--gold)"
+              }}>0{i + 1}</span>
+                <span style={{ height: 1, flex: 1, background: "var(--line)" }}></span>
+              </div>
+              <h4>{t}</h4>
+              <p>{d}</p>
+            </div>
+          )}
+        </div>
+
+        {/* User-uploadable image */}
+        <div className="reveal" style={{ marginTop: 64 }}>
+          <image-slot
+            id="psicologia-perfil"
+            shape="rounded"
+            radius="18"
+            placeholder="Arrastra o haz clic para subir imagen â€” psicologÃ­a y vocaciÃ³n"
+            style={{ display: "block", width: "100%", aspectRatio: "4 / 3", background: "var(--bg-elevated)", border: "1px solid var(--line)" }} data-comment-anchor="e706c75dde-image-slot-406-11">
+          </image-slot>
+        </div>
+      </div>
+    </section>);
+
+}
+
+Object.assign(window, { Psicologia, CareerTest });
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Contabilidad â€” anÃ¡lisis financiero de la carrera de IA */
+
+function Contabilidad() {
+  return (
+    <section id="contabilidad" className="cf-section accent-green">
+      <div className="container">
+        <span className="section-number left">V</span>
+        <div className="section-head reveal">
+          <div className="eyebrow green"><span className="dot"></span> Contabilidad</div>
+          <h2>El costo y la rentabilidad<br/>
+            de estudiar <em className="serif">Ing. en IA.</em></h2>
+          <p className="lead">
+            Estudiar IngenierÃ­a en IA exige una inversiÃ³n alta: equipo potente,
+            colegiaturas, software y certificaciones constantes. A cambio, los
+            salarios y la demanda laboral permiten recuperar la inversiÃ³n en
+            pocos aÃ±os. A continuaciÃ³n, el desglose financiero completo.
+          </p>
+        </div>
+
+        {/* InversiÃ³n total */}
+        <div className="reveal" style={{marginBottom: 64}}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 18,
+          }}>
+            <h3>InversiÃ³n total de la carrera</h3>
+            <span style={{fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)"}}>
+              AnÃ¡lisis costo-beneficio
+            </span>
+          </div>
+
+          <div className="fin-grid">
+            <div className="stat">
+              <div className="label">Colegiatura</div>
+              <div className="value"><span className="currency">$</span>80â€“450k</div>
+              <div className="sub">MXN Â· carrera completa</div>
+            </div>
+            <div className="stat">
+              <div className="label">Laptop y equipo</div>
+              <div className="value"><span className="currency">$</span>20â€“40k</div>
+              <div className="sub">MXN Â· una sola vez</div>
+            </div>
+            <div className="stat">
+              <div className="label">Certificaciones</div>
+              <div className="value"><span className="currency">$</span>10â€“30k</div>
+              <div className="sub">MXN Â· acumulado</div>
+            </div>
+            <div className="stat accent-gold">
+              <div className="label">Total aproximado</div>
+              <div className="value"><span className="currency">$</span>140â€“570k</div>
+              <div className="sub">MXN Â· toda la carrera</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sueldo + ROI */}
+        <div className="two-col reveal" style={{marginBottom: 64}}>
+          <div>
+            <h3 style={{marginBottom: 18}}>Sueldo esperado</h3>
+            <table className="table-pro">
+              <thead>
+                <tr><th>Etapa</th><th style={{textAlign:"right"}}>Sueldo mensual (MXN)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>ReciÃ©n egresado</td><td className="num">$18,000 â€“ $30,000</td></tr>
+                <tr><td>Promedio del sector</td><td className="num">$35,000 â€“ $60,000</td></tr>
+                <tr><td>Especialista senior</td><td className="num">hasta $120,000</td></tr>
+                <tr className="total"><td>RecuperaciÃ³n de inversiÃ³n</td><td className="num">~ 2 a 3 aÃ±os</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <h3 style={{marginBottom: 18}}>Â¿Por quÃ© es rentable?</h3>
+            <p style={{color: "var(--muted)", fontSize: 15.5, lineHeight: 1.7}}>
+              La IA se usa hoy en bancos, hospitales, redes sociales, e-commerce y
+              gobierno. Esa demanda no para de crecer. Aunque la inversiÃ³n inicial
+              es alta, los salarios la recuperan en pocos aÃ±os â€” sobre todo si la
+              persona suma experiencia y certificaciones.
+            </p>
+            <div className="stat accent-navy" style={{marginTop: 16}}>
+              <div className="label">Demanda laboral</div>
+              <div className="value" style={{fontSize: 28}}>Muy alta Â· creciente</div>
+              <div className="sub">Las empresas estÃ¡n automatizando procesos masivamente.</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Presupuesto */}
+        <div className="reveal" style={{marginBottom: 64}}>
+          <h3 style={{marginBottom: 18}}>Presupuesto de formaciÃ³n profesional</h3>
+          <div className="two-col">
+            <div>
+              <table className="table-pro">
+                <thead>
+                  <tr><th>Concepto mensual</th><th style={{textAlign: "right"}}>MXN</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Internet y software</td><td className="num">$1,500</td></tr>
+                  <tr><td>Transporte</td><td className="num">$1,500</td></tr>
+                  <tr><td>Cursos y plataformas</td><td className="num">$1,200</td></tr>
+                  <tr><td>Materiales</td><td className="num">$800</td></tr>
+                  <tr className="total"><td>Total mensual</td><td className="num">$5,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <table className="table-pro">
+                <thead>
+                  <tr><th>Concepto anual</th><th style={{textAlign: "right"}}>MXN</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Colegiatura</td><td className="num">$60,000</td></tr>
+                  <tr><td>Internet y software</td><td className="num">$18,000</td></tr>
+                  <tr><td>Cursos y certificaciones</td><td className="num">$20,000</td></tr>
+                  <tr><td>Transporte y materiales</td><td className="num">$22,000</td></tr>
+                  <tr className="total"><td>Total anual</td><td className="num">$120,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* ProyecciÃ³n financiera personal */}
+        <div className="reveal" style={{marginBottom: 64}}>
+          <h3 style={{marginBottom: 18}}>ProyecciÃ³n financiera personal</h3>
+          <p style={{color: "var(--muted)", fontSize: 15, marginBottom: 22, maxWidth: "70ch"}}>
+            Supongamos una persona que invierte ~$300,000 MXN en toda la carrera
+            y comienza ganando $25,000 MXN mensuales. AsÃ­ se verÃ­a su flujo:
+          </p>
+          <div className="fin-grid">
+            <div className="stat accent-navy">
+              <div className="label">InversiÃ³n total</div>
+              <div className="value"><span className="currency">$</span>300,000</div>
+              <div className="sub">MXN Â· carrera completa</div>
+            </div>
+            <div className="stat">
+              <div className="label">Sueldo mensual</div>
+              <div className="value"><span className="currency">$</span>25,000</div>
+              <div className="sub">MXN Â· sueldo inicial</div>
+            </div>
+            <div className="stat">
+              <div className="label">Gastos personales</div>
+              <div className="value"><span className="currency">$</span>12,000</div>
+              <div className="sub">MXN Â· mensuales</div>
+            </div>
+            <div className="stat accent-green">
+              <div className="label">Ahorro mensual</div>
+              <div className="value"><span className="currency">$</span>13,000</div>
+              <div className="sub">MXN Â· libres para invertir</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Empleo formal vs informal */}
+        <div className="reveal">
+          <h3 style={{marginBottom: 18}}>Empleo formal vs informal en IA</h3>
+          <div className="emp-grid">
+            <div className="emp">
+              <div className="emp-label">Formal</div>
+              <ul>
+                <li>Seguro y prestaciones</li>
+                <li>Estabilidad econÃ³mica</li>
+                <li className="con">Horarios mÃ¡s estrictos</li>
+              </ul>
+            </div>
+            <div className="emp">
+              <div className="emp-label">Remoto</div>
+              <ul>
+                <li>Flexibilidad de horario</li>
+                <li>Empleo internacional</li>
+                <li className="con">Menos convivencia laboral</li>
+              </ul>
+            </div>
+            <div className="emp">
+              <div className="emp-label">Emprendimiento</div>
+              <ul>
+                <li>Ingresos potencialmente altos</li>
+                <li>AutonomÃ­a total</li>
+                <li className="con">Riesgo financiero real</li>
+              </ul>
+            </div>
+            <div className="emp">
+              <div className="emp-label">Informal</div>
+              <ul>
+                <li>Dinero rÃ¡pido al inicio</li>
+                <li className="con">Sin prestaciones</li>
+                <li className="con">Sin estabilidad</li>
+              </ul>
+            </div>
+          </div>
+          <p style={{color: "var(--muted)", fontSize: 14, marginTop: 18, maxWidth: "75ch"}}>
+            En Ing. en IA el trabajo remoto es muy comÃºn: muchas empresas internacionales
+            contratan en lÃ­nea. El empleo formal brinda estabilidad; el emprendimiento
+            puede generar mÃ¡s dinero, pero implica riesgo econÃ³mico.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Contabilidad });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Business â€” survey results with 4 chart images */
+
+const BUSINESS_CHARTS = [
+  {
+    src: "assets/business-2.jpeg",
+    eyebrow: "Encuesta 01",
+    title: "Carreras del futuro mÃ¡s mencionadas",
+    desc: "Cuando preguntamos quÃ© carrera consideran â€œdel futuroâ€, la mitad de los alumnos eligiÃ³ IngenierÃ­a en IA. La ciencia de datos y el desarrollo de videojuegos tambiÃ©n figuran fuerte â€” todas profesiones tecnolÃ³gicas. Esto confirma la hipÃ³tesis del proyecto: las carreras vinculadas con tecnologÃ­a son percibidas como las mÃ¡s estratÃ©gicas para los prÃ³ximos aÃ±os.",
+    stats: [
+      ["50%", "IngenierÃ­a en IA"],
+      ["46%", "Ciencia de datos"],
+      ["36%", "Desarrollo de videojuegos"],
+      ["30%", "Marketing digital"],
+    ],
+  },
+  {
+    src: "assets/business-1.jpeg",
+    eyebrow: "Encuesta 02",
+    title: "Ãreas de interÃ©s de los alumnos",
+    desc: "Casi la mitad del grupo se inclina por TecnologÃ­a e IA como su Ã¡rea profesional preferida. Negocios y marketing se posiciona en segundo lugar y diseÃ±o digital cierra el podio. La concentraciÃ³n de respuestas tecnolÃ³gicas refuerza la idea de que la generaciÃ³n que estÃ¡ saliendo del colegio entiende a la IA no como una moda, sino como su entorno natural de trabajo.",
+    stats: [
+      ["44%", "TecnologÃ­a e IA"],
+      ["32%", "Negocios y marketing"],
+      ["24%", "DiseÃ±o y arte digital"],
+    ],
+  },
+  {
+    src: "assets/business-3.jpeg",
+    eyebrow: "Encuesta 03",
+    title: "Preferencias laborales",
+    desc: "La modalidad de trabajo que mÃ¡s eligen los alumnos es trabajar en otro paÃ­s, seguido de emprender su propio negocio y trabajo hÃ­brido. El trabajo 100% presencial y el 100% remoto quedan al final. La conclusiÃ³n es clara: la nueva generaciÃ³n no quiere estar atada ni a una oficina ni a un paÃ­s.",
+    stats: [
+      ["66%", "Trabajar en otro paÃ­s"],
+      ["58%", "Emprender su negocio"],
+      ["52%", "Trabajo hÃ­brido"],
+      ["26%", "Trabajo presencial"],
+      ["22%", "Trabajo remoto"],
+    ],
+  },
+  {
+    src: "assets/business-4.jpeg",
+    eyebrow: "Encuesta 04",
+    title: "Impacto de la tecnologÃ­a y la IA",
+    desc: "MÃ¡s del 60% del grupo opina que la IA reemplazarÃ¡ empleos. Un 28% piensa que solo afectarÃ¡ a algunos sectores, y un 8% considera que no reemplazarÃ¡ empleos en absoluto. La mayorÃ­a percibe la transformaciÃ³n como inevitable â€” lo que da mÃ¡s sentido aÃºn a las carreras analizadas en este proyecto, todas relacionadas con cÃ³mo se diseÃ±arÃ¡, regularÃ¡ y aprovecharÃ¡ esa transformaciÃ³n.",
+    stats: [
+      ["64%", "La IA reemplazarÃ¡ empleos"],
+      ["28%", "Solo algunos empleos"],
+      ["8%", "No reemplazarÃ¡ empleos"],
+    ],
+  },
+];
+
+function Business() {
+  return (
+    <section id="business" className="cf-section accent-green">
+      <div className="container">
+        <span className="section-number">VI</span>
+        <div className="section-head reveal">
+          <div className="eyebrow green"><span className="dot"></span> Business Â· Estudio de campo</div>
+          <h2>Las carreras del futuro,<br/>
+            segÃºn <em className="serif">nuestros compaÃ±eros.</em></h2>
+          <p className="lead">
+            Para esta materia diseÃ±amos una encuesta dentro del colegio con preguntas
+            sobre las carreras del futuro, Ã¡reas de interÃ©s, preferencias laborales y
+            la percepciÃ³n del impacto de la Inteligencia Artificial. Los resultados
+            que siguen reflejan cÃ³mo nuestra generaciÃ³n entiende â€”y se estÃ¡ preparando
+            paraâ€” el nuevo mundo profesional.
+          </p>
+          <div style={{
+            display: "flex", gap: 24, marginTop: 28, flexWrap: "wrap",
+            fontFamily: "var(--font-mono)", fontSize: 12,
+            color: "var(--muted)", letterSpacing: "0.05em", textTransform: "uppercase",
+          }}>
+            <div>Muestra<span style={{
+              display: "block", color: "var(--ink)", fontFamily: "var(--font-sans)",
+              fontSize: 16, fontWeight: 600, letterSpacing: 0, textTransform: "none", marginTop: 4,
+            }}>Alumnos del colegio</span></div>
+            <div>Preguntas<span style={{
+              display: "block", color: "var(--ink)", fontFamily: "var(--font-sans)",
+              fontSize: 16, fontWeight: 600, letterSpacing: 0, textTransform: "none", marginTop: 4,
+            }}>4 ejes principales</span></div>
+            <div>Periodo<span style={{
+              display: "block", color: "var(--ink)", fontFamily: "var(--font-sans)",
+              fontSize: 16, fontWeight: 600, letterSpacing: 0, textTransform: "none", marginTop: 4,
+            }}>Ciclo 2026</span></div>
+          </div>
+        </div>
+
+        <div style={{display: "flex", flexDirection: "column", gap: 32}}>
+          {BUSINESS_CHARTS.map((c, i) => (
+            <article key={c.title} className="reveal" style={{
+              background: "var(--bg-elevated)",
+              border: "1px solid var(--line)",
+              borderRadius: "var(--radius-lg)",
+              padding: 36,
+              boxShadow: "var(--shadow-sm)",
+            }}>
+              <div style={{
+                display: "grid",
+                gridTemplateColumns: i % 2 === 0 ? "1.2fr 1fr" : "1fr 1.2fr",
+                gap: 36,
+                alignItems: "center",
+              }} className="bus-row">
+                <div style={{order: i % 2 === 0 ? 1 : 2}}>
+                  <div style={{
+                    background: "var(--bg)",
+                    border: "1px solid var(--line)",
+                    borderRadius: "var(--radius)",
+                    padding: 20,
+                  }}>
+                    <img src={c.src} alt={c.title}
+                      style={{width: "100%", height: "auto", display: "block", borderRadius: 10}} />
+                  </div>
+                </div>
+                <div style={{order: i % 2 === 0 ? 2 : 1}}>
+                  <div style={{
+                    fontFamily: "var(--font-mono)", fontSize: 11,
+                    letterSpacing: "0.16em", textTransform: "uppercase",
+                    color: "var(--gold)", marginBottom: 12,
+                  }}>{c.eyebrow}</div>
+                  <h3 style={{fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 32, letterSpacing: "-0.015em", lineHeight: 1.1, marginBottom: 16}}>
+                    {c.title}
+                  </h3>
+                  <p style={{color: "var(--muted)", fontSize: 15.5, lineHeight: 1.65, marginBottom: 20}}>
+                    {c.desc}
+                  </p>
+                  <div style={{display: "flex", flexDirection: "column", gap: 8}}>
+                    {c.stats.map(([v, l]) => (
+                      <div key={l} style={{
+                        display: "flex", alignItems: "baseline", gap: 14,
+                        padding: "10px 14px",
+                        background: "var(--bg)",
+                        borderRadius: 10,
+                        border: "1px solid var(--line)",
+                      }}>
+                        <span style={{
+                          fontFamily: "var(--font-mono)", fontWeight: 500,
+                          fontSize: 14, color: "var(--navy)", minWidth: 44,
+                        }}>{v}</span>
+                        <span style={{fontSize: 14, color: "var(--ink-2)"}}>{l}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Business });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Cambridge â€” English essay on the future of AI Engineering */
+
+function Cambridge() {
+  return (
+    <section id="cambridge" className="cf-section accent-navy" style={{ background: "linear-gradient(180deg, transparent 0%, #fafbfd 30%, #fafbfd 80%, transparent 100%)" }}>
+      <div className="container wide">
+        <span className="section-number">VII</span>
+        <div className="section-head reveal">
+          <div className="eyebrow navy"><span className="dot"></span> Cambridge Â· English</div>
+          <h2>The Future of<br />
+            <em className="serif">A.I. Engineering.</em></h2>
+          <p className="lead">
+            As part of our Cambridge English module, our team prepared a short
+            opinion essay on whether Artificial Intelligence Engineering will become
+            one of the most important professions of the next decade.
+          </p>
+        </div>
+
+        <div className="reveal">
+          <article className="essay">
+            <h3>Will Artificial Intelligence Engineering become one of the most important professions of the future?</h3>
+            <div className="question">Opinion essay Â· CEFR B2 Â· 350 words</div>
+
+            <p className="first">
+              Artificial Intelligence is becoming one of the fastest-growing technologies in
+              the world. Many companies and industries now use A.I. to improve their services,
+              solve problems and make work more efficient. Because of this, the profession of
+              A.I. Engineering is becoming more important every year. In our opinion, A.I.
+              Engineering will be one of the most important professions of the future because
+              technology will continue advancing and affecting everyday life.
+            </p>
+
+            <p>
+              Currently, A.I. engineers work on creating intelligent systems, machine learning
+              programs, chatbots and automated technologies. Big companies are investing heavily
+              in artificial intelligence research and development. A.I. is already being used
+              in education, healthcare, transportation and business to increase productivity
+              and reduce human error. As technology keeps growing, more companies will need
+              professionals who really understand how it works.
+            </p>
+
+            <p>
+              There are clear advantages and disadvantages. One advantage is that A.I. can make
+              work faster, more accurate and create entirely new opportunities in technology
+              and innovation. However, some traditional jobs may disappear because of
+              automation. Another problem is that A.I. can be misused â€” to spread
+              misinformation, invade privacy or make unfair decisions â€” if it is not designed
+              and used ethically.
+            </p>
+
+            <p>
+              Our team would recommend that students interested in this career develop strong
+              skills in mathematics, programming and problem solving. It is also important to
+              study ethics and responsibility, because A.I. has a real impact on society.
+              Future A.I. engineers should keep learning new tools and improve their creativity
+              and teamwork skills, since this field changes very quickly.
+            </p>
+
+            <p>
+              In conclusion, Artificial Intelligence Engineering is a profession that will
+              continue growing in the future. It offers innovation, efficiency and new
+              opportunities, but it also brings ethical and social challenges. Even so, A.I.
+              engineers will play an important role in building technology that improves
+              people's lives. For this reason, anyone interested in this career should
+              prepare with both technical knowledge and a strong sense of responsibility.
+            </p>
+          </article>
+        </div>
+
+        {/* image placeholder */}
+        <div className="reveal" style={{ marginTop: 48 }}>
+          <div className="two-col">
+            <image-slot
+              id="cambridge-team"
+              shape="rounded"
+              radius="18"
+              placeholder="Arrastra o haz clic para subir imagen â€” equipo Cambridge"
+              style={{ display: "block", width: "100%", aspectRatio: "1 / 1", background: "var(--bg-elevated)", border: "1px solid var(--line)" }} data-comment-anchor="b5ed14f214-image-slot-74-13">
+            </image-slot>
+            <div>
+              <div className="eyebrow gold" style={{ marginBottom: 14 }}><span className="dot"></span> Key takeaways</div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 14 }}>
+                {[
+                  ["Growth", "A.I. Engineering will remain one of the fastest-growing fields in the next decade."],
+                  ["Ethics", "Responsibility, privacy and bias-awareness are as important as technical skill."],
+                  ["Skills", "Math, programming and continuous learning are the foundation of this career."],
+                  ["Impact", "A.I. engineers will build the tools that shape how people work and live."],
+                ].map(([k, v]) => (
+                  <li key={k} style={{ display: "grid", gridTemplateColumns: "90px 1fr", gap: 16, alignItems: "baseline" }}>
+                    <span style={{
+                      fontFamily: "var(--font-mono)", fontSize: 11,
+                      letterSpacing: "0.16em", textTransform: "uppercase",
+                      color: "var(--gold)",
+                    }}>{k}</span>
+                    <span style={{ color: "var(--ink-2)", fontSize: 15 }}>{v}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+Object.assign(window, { Cambridge });
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Speaking â€” Roundtable Discussion video (YouTube embed) */
+
+function Speaking() {
+  return (
+    <section id="speaking" className="cf-section accent-gold" style={{background: "linear-gradient(180deg, transparent 0%, #fafbfd 30%, #fafbfd 80%, transparent 100%)"}}>
+      <div className="container">
+        <span className="section-number left">VIII</span>
+        <div className="section-head reveal">
+          <div className="eyebrow"><span className="dot"></span> Speaking Â· English</div>
+          <h2>Roundtable<br/>
+            <em className="serif">Discussion.</em></h2>
+          <p className="lead">
+            This is our video for the Literature cross-curricular project: a
+            roundtable discussion about <em className="serif">Artificial Intelligence Engineering</em>,
+            its pros, cons, and areas of opportunity. Cuatro estudiantes debaten en
+            inglÃ©s cÃ³mo la IA estÃ¡ cambiando el trabajo, la educaciÃ³n y la Ã©tica
+            profesional.
+          </p>
+        </div>
+
+        <div className="reveal">
+          <div style={{
+            position: "relative",
+            background: "linear-gradient(155deg, var(--navy) 0%, var(--navy-2) 60%, #1c3a6a 100%)",
+            borderRadius: "var(--radius-lg)",
+            padding: 8,
+            boxShadow: "var(--shadow-lg)",
+            overflow: "hidden",
+          }}>
+            {/* tech grid texture */}
+            <div style={{
+              position: "absolute", inset: 0,
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+              backgroundSize: "36px 36px",
+              maskImage: "radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%)",
+              pointerEvents: "none",
+            }}></div>
+
+            {/* video frame label */}
+            <div style={{
+              position: "absolute", top: 24, left: 28, zIndex: 2,
+              display: "flex", gap: 8, alignItems: "center",
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "rgba(255,255,255,0.7)",
+              pointerEvents: "none",
+            }}>
+              <span style={{
+                width: 8, height: 8, borderRadius: "50%",
+                background: "#e54848",
+                boxShadow: "0 0 0 4px rgba(229,72,72,0.18)",
+              }}></span>
+              Video Â· Roundtable Discussion
+            </div>
+
+            <div style={{
+              position: "relative", zIndex: 2,
+              aspectRatio: "16 / 9",
+              width: "100%",
+              borderRadius: "calc(var(--radius-lg) - 8px)",
+              overflow: "hidden",
+              background: "#0a1a30",
+            }}>
+              <iframe
+                src="https://www.youtube.com/embed/Q2N_a8sTqAY?rel=0&modestbranding=1"
+                title="Roundtable Discussion â€” Artificial Intelligence Engineering"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
+                style={{
+                  position: "absolute", inset: 0,
+                  width: "100%", height: "100%",
+                  border: "0",
+                  display: "block",
+                }}
+              ></iframe>
+            </div>
+          </div>
+
+          {/* meta strip below the video */}
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            marginTop: 14, padding: "0 8px", flexWrap: "wrap", gap: 8,
+          }}>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "var(--muted)",
+            }}>YouTube Â· Roundtable Discussion</span>
+            <a href="https://www.youtube.com/watch?v=Q2N_a8sTqAY"
+               target="_blank" rel="noopener noreferrer"
+               style={{
+                 fontFamily: "var(--font-mono)", fontSize: 11,
+                 letterSpacing: "0.14em", textTransform: "uppercase",
+                 color: "var(--navy)",
+                 display: "inline-flex", alignItems: "center", gap: 6,
+               }}>
+              Ver en YouTube â†’
+            </a>
+          </div>
+        </div>
+
+        {/* speakers / topics */}
+        <div className="reveal" style={{marginTop: 36}}>
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14,
+          }} className="speaking-grid">
+            {[
+              ["Pros", "Faster work, scalable services, new opportunities in every industry."],
+              ["Cons", "Job replacement, bias, privacy concerns and dependency on technology."],
+              ["Opportunities", "New careers, ethical roles, A.I. literacy and global mobility."],
+            ].map(([k, v]) => (
+              <div key={k} style={{
+                padding: 22,
+                background: "var(--bg-elevated)",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--radius)",
+              }}>
+                <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: 11,
+                  letterSpacing: "0.14em", textTransform: "uppercase",
+                  color: "var(--gold)", marginBottom: 10,
+                }}>{k}</div>
+                <p style={{fontSize: 14.5, color: "var(--ink-2)", margin: 0, lineHeight: 1.55}}>{v}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Speaking });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Literature â€” infografÃ­a + breve explicaciÃ³n */
+
+function Literature() {
+  return (
+    <section id="literature" className="cf-section accent-navy">
+      <div className="container">
+        <span className="section-number">IX</span>
+        <div className="section-head reveal">
+          <div className="eyebrow gold"><span className="dot"></span> Literature Â· English</div>
+          <h2>Lo que necesita saber<br />
+            un <em className="serif">A.I. Engineer.</em></h2>
+          <p className="lead">
+            As part of the Literature module, we researched the profile of an Artificial
+            Intelligence engineer and summarized the key knowledge, skills, and mindset
+            in this infographic.
+          </p>
+        </div>
+
+        <div className="reveal" style={{
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius-lg)",
+          padding: 24,
+          boxShadow: "var(--shadow-md)"
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 16, padding: "0 8px"
+          }}>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "var(--gold)"
+            }}>InfografÃ­a Â· Literature</span>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "var(--muted)"
+            }}>A.I. Engineer Â· perfil completo</span>
+          </div>
+          <img src="assets/literature-infografia.jpeg"
+          alt="Artificial Intelligence Engineer â€” What You Must Know & Skills You Need"
+          style={{
+            width: "100%", height: "auto", display: "block",
+            borderRadius: "var(--radius)",
+            border: "1px solid var(--line)"
+          }} />
+        </div>
+
+        <div className="feature-grid reveal" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 32 }}>
+          {[
+          ["Core Knowledge", "Mathematics, programming, machine learning, deep learning, and AI specializations."],
+          ["Technical Skills", "Model development and deployment, debugging, APIs, databases, and cloud platforms."],
+          ["Soft Skills + Mindset", "Communication, teamwork, critical thinking, continuous learning, and resilience."]].
+          map(([t, d]) =>
+          <div key={t} className="feature">
+              <span className="tag">{t}</span>
+              <p style={{ marginTop: 8 }}>{d}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>);
+
+}
+
+Object.assign(window, { Literature });
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* CÃ¡lculo â€” 4 chart placeholders (user will add their charts) */
+
+const CHARTS = [
+{
+  num: "01",
+  title: "EvoluciÃ³n de Egresados en Ciencia de Datos",
+  region: "MÃ©xico",
+  x: "AÃ±os",
+  y: "NÃºmero de egresados",
+  note: "Crecimiento sostenido en los Ãºltimos aÃ±os."
+},
+{
+  num: "02",
+  title: "EvoluciÃ³n de Egresados en IngenierÃ­a en Software",
+  region: "MÃ©xico",
+  x: "AÃ±os",
+  y: "NÃºmero de egresados",
+  note: "Una de las carreras de mayor expansiÃ³n."
+},
+{
+  num: "03",
+  title: "Egresados en Telecomunicaciones y Sistemas",
+  region: "MÃ©xico",
+  x: "AÃ±os",
+  y: "NÃºmero de egresados",
+  note: "Tendencia estable con repuntes recientes."
+},
+{
+  num: "04",
+  title: "PredicciÃ³n de Egresados en IngenierÃ­a en IA",
+  region: "MÃ©xico Â· proyecciÃ³n",
+  x: "AÃ±os",
+  y: "NÃºmero de egresados",
+  note: "Carrera emergente â€” crecimiento exponencial estimado."
+}];
+
+
+/* Drop-zone image slot (uses <image-slot> web component, plus a click-to-upload
+   fallback that reads a File into a data URL and shows it inline). */
+function ChartImageSlot({ id, label }) {
+  return (
+    <div style={{
+      position: "relative",
+      width: "100%",
+      aspectRatio: "4 / 3",
+      borderRadius: 14,
+      overflow: "hidden",
+      background: "#fafbfd"
+    }}>
+      <image-slot
+        id={id}
+        shape="rounded"
+        radius="14"
+        placeholder={label}
+        style={{
+          display: "block",
+          width: "100%",
+          height: "100%",
+          background: "var(--bg-elevated)"
+        }}>
+      </image-slot>
+    </div>);
+
+}
+
+function Calculo() {
+  return (
+    <section id="calculo" className="cf-section accent-navy">
+      <div className="container">
+        <span className="section-number">IV</span>
+        <div className="section-head reveal">
+          <div className="eyebrow"><span className="dot"></span> CÃ¡lculo Â· EstadÃ­stica</div>
+          <h2>Tendencias y proyecciÃ³n<br />
+            de <em className="serif">egresados en tecnologÃ­a.</em></h2>
+          <p className="lead">
+            En cÃ¡lculo analizamos la evoluciÃ³n del nÃºmero de egresados de carreras
+            tecnolÃ³gicas en MÃ©xico y proyectamos el crecimiento esperado para
+            IngenierÃ­a en Inteligencia Artificial. AquÃ­ estÃ¡n las cuatro grÃ¡ficas
+            que sustentan nuestro anÃ¡lisis â€” pueden reemplazarse por las versiones
+            finales del equipo.
+          </p>
+        </div>
+
+        <div className="chart-grid">
+          {CHARTS.map((c, i) =>
+          <div key={c.num} className={`chart-card reveal reveal-delay-${i % 3 + 1}`}>
+              <div className="chart-meta">
+                <div>
+                  <div className="gnum">GrÃ¡fica {c.num}</div>
+                  <h4>{c.title}</h4>
+                </div>
+                <span style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.12em", textTransform: "uppercase",
+                color: "var(--muted)"
+              }}>{c.region}</span>
+              </div>
+
+              {/* Drop your chart image here â€” click or drag-and-drop */}
+              <ChartImageSlot
+              id={`grafica-${c.num}`}
+              label={`Arrastra o haz clic para subir la GrÃ¡fica ${c.num}`} />
+            
+
+              <div className="axes">
+                <span><b>Eje X:</b> {c.x}</span>
+                <span><b>Eje Y:</b> {c.y}</span>
+              </div>
+              <p style={{ fontSize: 13.5, color: "var(--muted)", marginTop: 12, marginBottom: 0 }}>
+                {c.note}
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>);
+
+}
+
+Object.assign(window, { Calculo });
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Derecho â€” regulaciones de IA, protecciÃ³n de datos, telemedicina */
+
+const LAWS = [
+  {
+    title: "Ley Federal de ProtecciÃ³n de Datos Personales",
+    tag: "LFPDPPP",
+    desc: "Protege la informaciÃ³n personal de los usuarios y obliga a las empresas a cuidar los datos que recopilan mediante sistemas de IA.",
+  },
+  {
+    title: "ConstituciÃ³n PolÃ­tica de los Estados Unidos Mexicanos",
+    tag: "Marco constitucional",
+    desc: "Protege derechos fundamentales como privacidad, libertad de expresiÃ³n y acceso a la informaciÃ³n.",
+  },
+  {
+    title: "CÃ³digo Penal Federal",
+    tag: "Delitos digitales",
+    desc: "Se aplica cuando la IA se utiliza para cometer delitos como fraude digital, robo de identidad o difusiÃ³n de informaciÃ³n falsa.",
+  },
+  {
+    title: "Normas de propiedad intelectual y derechos de autor",
+    tag: "Propiedad intelectual",
+    desc: "Regulan el uso de imÃ¡genes, mÃºsica, textos o contenido generado por inteligencia artificial.",
+  },
+];
+
+const RISKS = [
+  {
+    pill: "Privacidad",
+    title: "ViolaciÃ³n de privacidad",
+    desc: "La IA recopila y analiza grandes cantidades de informaciÃ³n personal.",
+    example: "Una app de IA guarda datos mÃ©dicos o conversaciones privadas sin permiso del usuario.",
+  },
+  {
+    pill: "Identidad",
+    title: "Robo de identidad y fraudes",
+    desc: "La IA puede usarse para crear voces, imÃ¡genes o videos falsos.",
+    example: "Los \"deepfakes\" pueden imitar a una persona para cometer estafas o difundir informaciÃ³n falsa.",
+  },
+  {
+    pill: "Autor",
+    title: "Derechos de autor",
+    desc: "Algunas IA generan contenido utilizando obras existentes sin autorizaciÃ³n.",
+    example: "Una IA crea imÃ¡genes copiando estilos de artistas sin dar crÃ©ditos ni permiso.",
+  },
+  {
+    pill: "Sesgo",
+    title: "DiscriminaciÃ³n o decisiones injustas",
+    desc: "Los sistemas de IA pueden tener errores o sesgos.",
+    example: "Un sistema automÃ¡tico de contrataciÃ³n rechaza candidatos por gÃ©nero, edad o apariencia.",
+  },
+  {
+    pill: "Responsabilidad",
+    title: "Responsabilidad por errores",
+    desc: "No siempre estÃ¡ claro quiÃ©n responde cuando una IA comete un error.",
+    example: "Un vehÃ­culo autÃ³nomo provoca un accidente â€” Â¿culpa del usuario, del fabricante o del programador?",
+  },
+  {
+    pill: "Datos",
+    title: "Fuga de informaciÃ³n",
+    desc: "Los modelos de IA pueden filtrar datos sensibles entrenados sin control.",
+    example: "Un chatbot revela informaciÃ³n confidencial de empresas o usuarios por errores en su entrenamiento.",
+  },
+];
+
+const TELEMED = [
+  ["DiagnÃ³sticos correctos", "El mÃ©dico debe actuar con cuidado y utilizar informaciÃ³n confiable, aÃºn cuando un sistema de IA apoye la decisiÃ³n."],
+  ["ProtecciÃ³n de datos del paciente", "La informaciÃ³n mÃ©dica es confidencial y debe mantenerse segura en cada plataforma."],
+  ["Consentimiento del paciente", "El paciente debe aceptar explÃ­citamente recibir atenciÃ³n mÃ©dica por medios electrÃ³nicos."],
+  ["Herramientas tecnolÃ³gicas seguras", "Las plataformas digitales deben proteger la privacidad y minimizar riesgos de error."],
+];
+
+function Derecho() {
+  return (
+    <section id="derecho" className="cf-section accent-navy">
+      <div className="container">
+        <span className="section-number left">X</span>
+        <div className="section-head reveal">
+          <div className="eyebrow navy"><span className="dot"></span> Derecho</div>
+          <h2>Regulaciones, riesgos<br/>
+            y <em className="serif">protecciÃ³n de datos.</em></h2>
+          <p className="lead">
+            MÃ©xico no cuenta todavÃ­a con una ley especÃ­fica que regule la Inteligencia
+            Artificial. Sin embargo, existen marcos legales que se aplican a su uso â€”
+            especialmente en privacidad, derechos digitales y responsabilidad legal.
+            AquÃ­ mapeamos los principales.
+          </p>
+        </div>
+
+        {/* Laws list */}
+        <div className="reveal" style={{marginBottom: 80}}>
+          <h3 style={{marginBottom: 18}}>Principales regulaciones aplicables a la IA</h3>
+          <div className="law-list">
+            {LAWS.map(l => (
+              <div key={l.title} className="law-row">
+                <div>
+                  <h4>{l.title}</h4>
+                  <div className="law-tag">{l.tag}</div>
+                </div>
+                <p>{l.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Risks */}
+        <div className="reveal" style={{marginBottom: 80}}>
+          <div style={{display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18}}>
+            <h3>Riesgos legales del uso de IA</h3>
+            <span style={{fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)"}}>
+              6 escenarios
+            </span>
+          </div>
+          <div className="risk-grid">
+            {RISKS.map(r => (
+              <div key={r.title} className="risk">
+                <span className="pill">{r.pill}</span>
+                <h4>{r.title}</h4>
+                <p>{r.desc}</p>
+                <div className="ex"><b>Ejemplo</b>{r.example}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ProtecciÃ³n de datos + ARCO */}
+        <div className="reveal" style={{marginBottom: 80}}>
+          <div className="two-col">
+            <div>
+              <div className="eyebrow gold" style={{marginBottom: 14}}><span className="dot"></span> ProtecciÃ³n de datos</div>
+              <h3 style={{fontSize: 28}}>Tu informaciÃ³n personal<br/>estÃ¡ protegida por ley.</h3>
+              <p style={{color: "var(--muted)", fontSize: 15.5, lineHeight: 1.7}}>
+                La protecciÃ³n de datos es el conjunto de leyes y derechos que cuidan la
+                informaciÃ³n personal: nombre, direcciÃ³n, telÃ©fono, correo, fotografÃ­as,
+                informaciÃ³n mÃ©dica y datos bancarios. La IA funciona analizando datos
+                masivos â€” por eso, proteger la privacidad de los usuarios es fundamental.
+              </p>
+              <div style={{
+                display: "flex", flexWrap: "wrap", gap: 8, marginTop: 18,
+              }}>
+                {["Nombre", "DirecciÃ³n", "TelÃ©fono", "Correo", "FotografÃ­as", "InformaciÃ³n mÃ©dica", "Datos bancarios"].map(d => (
+                  <span key={d} style={{
+                    fontSize: 12, fontFamily: "var(--font-mono)",
+                    padding: "6px 12px", borderRadius: 999,
+                    background: "var(--bg-elevated)", border: "1px solid var(--line)",
+                    color: "var(--ink-2)",
+                  }}>{d}</span>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: "var(--muted)", marginBottom: 14,
+              }}>Derechos ARCO</div>
+              <div className="arco">
+                {[
+                  ["A", "Acceso"],
+                  ["R", "RectificaciÃ³n"],
+                  ["C", "CancelaciÃ³n"],
+                  ["O", "OposiciÃ³n"],
+                ].map(([l, w]) => (
+                  <div key={l} className="arco-item">
+                    <div className="letter">{l}</div>
+                    <div className="word">{w}</div>
+                  </div>
+                ))}
+              </div>
+              <p style={{color: "var(--muted)", fontSize: 14, marginTop: 18}}>
+                Cada persona puede acceder a sus datos, pedir que se corrijan, solicitar
+                su eliminaciÃ³n y oponerse a ciertos usos de su informaciÃ³n.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Telemedicina */}
+        <div className="reveal">
+          <div style={{display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 18}}>
+            <h3>Responsabilidad legal en telemedicina e IA mÃ©dica</h3>
+            <span style={{fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--muted)"}}>
+              Caso de estudio
+            </span>
+          </div>
+          <p style={{color: "var(--muted)", fontSize: 15.5, marginBottom: 28, maxWidth: "75ch"}}>
+            Aunque el diagnÃ³stico se realice por internet o con apoyo de IA, los mÃ©dicos
+            siguen siendo legalmente responsables de sus decisiones y tratamientos.
+            Estas son sus obligaciones fundamentales:
+          </p>
+
+          <div className="feature-grid" style={{gridTemplateColumns: "repeat(2, 1fr)"}}>
+            {TELEMED.map(([t, d], i) => (
+              <div key={t} className="feature">
+                <span className="tag">ObligaciÃ³n 0{i + 1}</span>
+                <h4>{t}</h4>
+                <p>{d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Conclusion() {
+  return (
+    <section id="conclusion" className="cf-section">
+      <div className="container">
+        <div className="conclusion reveal">
+          <div className="eyebrow"><span className="dot"></span> ConclusiÃ³n general</div>
+          <h2 style={{marginTop: 18}}>
+            Derecho, IA y Negocios<br/>
+            son inversiones <em className="serif" style={{color: "var(--gold-2)"}}>viables</em>.
+          </h2>
+          <p style={{marginTop: 24, position: "relative", zIndex: 2}}>
+            Las tres carreras tendrÃ¡n enorme importancia en una sociedad cada vez mÃ¡s
+            tecnolÃ³gica y globalizada. Cada una exige tiempo, dinero y preparaciÃ³n, pero
+            todas ofrecen crecimiento laboral y estabilidad econÃ³mica.
+          </p>
+          <p style={{position: "relative", zIndex: 2}}>
+            <strong style={{color: "white"}}>IngenierÃ­a en IA</strong> destaca por sus altos
+            salarios y demanda tecnolÃ³gica; <strong style={{color: "white"}}>Derecho</strong>{" "}
+            seguirÃ¡ siendo indispensable por la regulaciÃ³n, la justicia y los nuevos retos
+            digitales; <strong style={{color: "white"}}>Negocios</strong> serÃ¡ clave para el
+            crecimiento de empresas y emprendimientos. Elegir cualquiera de estas carreras
+            puede ser rentable si la persona desarrolla habilidades, experiencia y capacidad
+            de adaptarse a los cambios del futuro.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FUENTES (consolidadas al final) ---------- */
+const SOURCES_APA = [
+  "BBVA. (2024). Carreras del futuro relacionadas con tecnologÃ­a. BBVA.",
+  "CÃ¡mara de Diputados. (2010). Ley Federal de ProtecciÃ³n de Datos Personales en PosesiÃ³n de los Particulares (LFPDPPP). Diario Oficial de la FederaciÃ³n.",
+  "Castells, M. (2001). La era de la informaciÃ³n. Siglo XXI Editores.",
+  "DataPath. (2024). Carreras tecnolÃ³gicas en MÃ©xico.",
+  "Diario Oficial de la FederaciÃ³n. (s.f.). Normatividad mexicana sobre protecciÃ³n de datos personales.",
+  "El Economista. (2024). Demanda laboral y sueldos en el sector tecnolÃ³gico.",
+  "El PaÃ­s MÃ©xico. (2024). Riesgos legales de la inteligencia artificial.",
+  "Estudiantes MÃ©xico. (2024). Costos y becas de carreras universitarias.",
+  "Harari, Y. N. (2018). 21 lecciones para el siglo XXI. Debate.",
+  "IA MÃ©xico News. (2024). Tendencias del mercado laboral en inteligencia artificial.",
+  "IBM. (2024). Â¿QuÃ© es la inteligencia artificial? IBM.",
+  "Instituto Nacional de Transparencia, Acceso a la InformaciÃ³n y ProtecciÃ³n de Datos Personales (INAI). (s.f.). Derechos ARCO.",
+  "National Geographic. (2023). Â¿QuÃ© es la inteligencia artificial? National Geographic.",
+  "Ordine, N. (2013). La utilidad de lo inÃºtil. Acantilado.",
+  "Publimetro MÃ©xico. (2024). Sueldos de profesionistas en tecnologÃ­a.",
+  "PwC MÃ©xico. (2024). El futuro del trabajo y la inteligencia artificial.",
+  "Russell, S., & Norvig, P. (2021). Artificial Intelligence: A Modern Approach. Pearson.",
+  "Suprema Corte de Justicia de la NaciÃ³n. (s.f.). Resoluciones sobre protecciÃ³n de datos personales.",
+  "Universidad Nacional AutÃ³noma de MÃ©xico (UNAM). (2023). Importancia de las humanidades.",
+  "UNESCO. (2021). RecomendaciÃ³n sobre la Ã©tica de la inteligencia artificial. UNESCO.",
+  "UNESCO. (2024). Inteligencia artificial y educaciÃ³n. UNESCO.",
+];
+
+function Fuentes() {
+  return (
+    <section id="fuentes" className="cf-section" style={{paddingTop: 60}}>
+      <div className="container">
+        <div className="section-head reveal" style={{marginBottom: 36}}>
+          <div className="eyebrow"><span className="dot"></span> BibliografÃ­a Â· Sistema APA</div>
+          <h2 style={{fontSize: "clamp(28px, 3.4vw, 44px)"}}>
+            Fuentes <em className="serif">consultadas.</em>
+          </h2>
+        </div>
+
+        <div className="reveal" style={{
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius-lg)",
+          padding: 40,
+          boxShadow: "var(--shadow-sm)",
+        }}>
+          <ol style={{
+            listStyle: "none", padding: 0, margin: 0,
+            display: "flex", flexDirection: "column",
+            gap: 14,
+          }}>
+            {SOURCES_APA.map((s, i) => (
+              <li key={i} style={{
+                display: "grid",
+                gridTemplateColumns: "44px 1fr",
+                gap: 16,
+                paddingBottom: 14,
+                borderBottom: i === SOURCES_APA.length - 1 ? "none" : "1px solid var(--line)",
+                alignItems: "baseline",
+              }}>
+                <span style={{
+                  fontFamily: "var(--font-mono)", fontSize: 11,
+                  letterSpacing: "0.1em", color: "var(--gold)",
+                }}>{String(i + 1).padStart(2, "0")}</span>
+                <span style={{
+                  color: "var(--ink-2)", fontSize: 15, lineHeight: 1.65,
+                  // hanging indent for APA-style
+                  paddingLeft: 28,
+                  textIndent: "-28px",
+                }}>{s}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Derecho, Conclusion, Fuentes });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Historia â€” IA y humanidades */
+
+function Historia() {
+  return (
+    <section id="historia" className="cf-section accent-green" style={{ background: "linear-gradient(180deg, transparent 0%, #fafbfd 30%, #fafbfd 80%, transparent 100%)" }}>
+      <div className="container wide">
+        <span className="section-number">XI</span>
+        <div className="section-head reveal">
+          <div className="eyebrow navy"><span className="dot"></span> Historia Â· InvestigaciÃ³n</div>
+          <h2>IngenierÃ­a en IA<br />
+            y las <em className="serif">humanidades.</em></h2>
+          <p className="lead">
+            La IngenierÃ­a en Inteligencia Artificial es una de las carreras mÃ¡s
+            importantes actualmente. Su crecimiento ha provocado que las humanidades
+            â€”como historia y filosofÃ­aâ€” pierdan visibilidad. Esta investigaciÃ³n analiza
+            por quÃ© ocurriÃ³ ese cambio y por quÃ© las humanidades siguen siendo
+            necesarias para entender lo que la tecnologÃ­a estÃ¡ construyendo.
+          </p>
+        </div>
+
+        {/* Bloque tipo paper acadÃ©mico */}
+        <div className="reveal" style={{
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius-lg)",
+          padding: 48,
+          boxShadow: "var(--shadow-md)"
+        }}>
+          <div className="hist-grid" style={{
+            display: "grid",
+            gridTemplateColumns: "200px 1fr",
+            gap: 40
+          }}>
+            <aside style={{
+              borderRight: "1px solid var(--line)", paddingRight: 24,
+              display: "flex", flexDirection: "column", gap: 22
+            }} className="hist-aside">
+              {[
+              ["Pregunta",
+              "Â¿CÃ³mo ha influido la Ing. en IA en la pÃ©rdida de importancia de las humanidades?"],
+              ["MetodologÃ­a",
+              "La investigaciÃ³n se realizÃ³ mediante la bÃºsqueda y anÃ¡lisis de artÃ­culos, libros y pÃ¡ginas confiables relacionadas con inteligencia artificial y humanidades."],
+              ["Objetivo",
+              "Analizar cÃ³mo el avance de la Inteligencia Artificial ha cambiado la importancia de las humanidades en la actualidad."]].
+              map(([k, v]) =>
+              <div key={k}>
+                  <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: 10.5,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  color: "var(--gold)", marginBottom: 8
+                }}>{k}</div>
+                  <p style={{ margin: 0, color: "var(--muted)", fontSize: 13.5, lineHeight: 1.6 }}>{v}</p>
+                </div>
+              )}
+            </aside>
+
+            <div className="hist-body" style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+              <Apartado n="01" title="IntroducciÃ³n">
+                Hoy en dÃ­a, muchas personas prefieren carreras relacionadas con tecnologÃ­a
+                e inteligencia artificial porque tienen mÃ¡s oportunidades laborales. Sin
+                embargo, las humanidades siguen siendo importantes para comprender la
+                sociedad y los problemas Ã©ticos.
+              </Apartado>
+
+              <Apartado n="02" title="Planteamiento del problema">
+                Las carreras tecnolÃ³gicas tienen mÃ¡s valor actualmente, mientras que las
+                humanidades son consideradas menos Ãºtiles. El problema es entender cÃ³mo
+                la Inteligencia Artificial ha influido en este cambio.
+              </Apartado>
+
+              <Apartado n="03" title="JustificaciÃ³n">
+                Esta investigaciÃ³n es importante porque ayuda a comprender cÃ³mo la
+                tecnologÃ­a ha cambiado la educaciÃ³n y las carreras profesionales.
+                TambiÃ©n permite reflexionar sobre la importancia de las humanidades.
+              </Apartado>
+
+              <Apartado n="04" title="Resultados">
+                Se encontrÃ³ que las carreras tecnolÃ³gicas son mÃ¡s valoradas porque tienen
+                mayor demanda laboral. Sin embargo, las humanidades siguen siendo
+                necesarias porque ayudan a desarrollar pensamiento crÃ­tico y valores
+                Ã©ticos.
+              </Apartado>
+
+              <Apartado n="05" title="Conclusiones">
+                La Inteligencia Artificial es una carrera del futuro muy importante, pero
+                las humanidades tambiÃ©n siguen siendo necesarias. Ambas Ã¡reas pueden
+                complementarse para mejorar la sociedad.
+              </Apartado>
+            </div>
+          </div>
+        </div>
+
+        {/* recurso grÃ¡fico */}
+        <div className="reveal" style={{ marginTop: 48 }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 14
+          }}>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.16em", textTransform: "uppercase",
+              color: "var(--muted)"
+            }}>Recurso grÃ¡fico Â· Historia</span>
+            <span style={{ fontSize: 12, color: "var(--muted-2)" }}>Arrastra o haz clic para subir</span>
+          </div>
+          <image-slot
+            id="historia-recurso"
+            shape="rounded"
+            radius="18"
+            placeholder="Imagen, lÃ­nea de tiempo o infografÃ­a â€” IA y humanidades"
+            style={{ display: "block", width: "100%", aspectRatio: "4 / 3", background: "var(--bg-elevated)", border: "1px solid var(--line)" }} data-comment-anchor="a6e022d91d-image-slot-107-11">
+          </image-slot>
+        </div>
+      </div>
+    </section>);
+
+}
+
+function Apartado({ n, title, children }) {
+  return (
+    <div>
+      <div style={{ display: "flex", alignItems: "baseline", gap: 14, marginBottom: 8 }}>
+        <span style={{
+          fontFamily: "var(--font-mono)", fontSize: 11,
+          letterSpacing: "0.16em", color: "var(--muted)"
+        }}>{n}</span>
+        <h3 style={{ margin: 0, fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 24, letterSpacing: "-0.01em", color: "var(--navy)" }}>
+          {title}
+        </h3>
+      </div>
+      <p style={{ margin: 0, color: "var(--ink-2)", fontSize: 15.5, lineHeight: 1.7, maxWidth: "68ch" }}>
+        {children}
+      </p>
+    </div>);
+
+}
+
+Object.assign(window, { Historia });
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* EcologÃ­a â€” periÃ³dico sobre impacto ambiental de la IA */
+
+function Ecologia() {
+  return (
+    <section id="ecologia" className="cf-section accent-green">
+      <div className="container">
+        <span className="section-number">XII</span>
+        <div className="section-head reveal">
+          <div className="eyebrow green"><span className="dot"></span> EcologÃ­a</div>
+          <h2>El costo ambiental<br/>
+            de la <em className="serif">revoluciÃ³n digital.</em></h2>
+          <p className="lead">
+            En ecologÃ­a investigamos el impacto ambiental de la IngenierÃ­a en Inteligencia
+            Artificial: cuÃ¡nta energÃ­a consume el entrenamiento de modelos, cuÃ¡nta agua
+            usan los centros de datos para refrigerarse y cÃ³mo â€”al mismo tiempoâ€” la
+            propia IA puede ayudar a optimizar el consumo energÃ©tico de ciudades enteras.
+            El resultado lo presentamos como periÃ³dico de ediciÃ³n especial.
+          </p>
+        </div>
+
+        <div className="reveal" style={{
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius-lg)",
+          padding: 24,
+          boxShadow: "var(--shadow-md)",
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 16, padding: "0 8px", flexWrap: "wrap", gap: 12,
+          }}>
+            <div>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "var(--green)",
+              }}>PeriÃ³dico Â· EdiciÃ³n especial</div>
+              <h3 style={{margin: "4px 0 0", fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 22, letterSpacing: "-0.01em"}}>
+                El costo ambiental de la revoluciÃ³n digital
+              </h3>
+            </div>
+            <div style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "var(--muted)",
+            }}>Proyecto transversal Â· EcologÃ­a</div>
+          </div>
+
+          <img src="assets/ecologia-periodico.png"
+               alt="PeriÃ³dico â€” El costo ambiental de la revoluciÃ³n digital"
+               style={{
+                 width: "100%", height: "auto", display: "block",
+                 borderRadius: "var(--radius)",
+                 border: "1px solid var(--line)",
+                 background: "white",
+               }} />
+        </div>
+
+        {/* highlights */}
+        <div className="reveal" style={{
+          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginTop: 32,
+        }} className="eco-grid">
+          {[
+            ["EnergÃ­a", "El entrenamiento de un modelo grande puede consumir tanta electricidad como cientos de hogares en un aÃ±o."],
+            ["Agua", "Los centros de datos generan calor extremo y necesitan grandes cantidades de agua potable para refrigerarse."],
+            ["OptimizaciÃ³n", "La misma IA puede gestionar semÃ¡foros, alumbrado y maquinaria para reducir el consumo total de las ciudades."],
+          ].map(([k, v]) => (
+            <div key={k} style={{
+              padding: 22, border: "1px solid var(--line)",
+              borderRadius: "var(--radius)", background: "var(--bg-elevated)",
+            }}>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "var(--green)", marginBottom: 10,
+              }}>{k}</div>
+              <p style={{margin: 0, fontSize: 14.5, color: "var(--ink-2)", lineHeight: 1.55}}>{v}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Ecologia });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Computer Lab â€” careers of the future in Mexico (table image) */
+
+function ComputerLab() {
+  return (
+    <section id="computerlab" className="cf-section accent-navy">
+      <div className="container wide">
+        <span className="section-number left">XIII</span>
+
+        <div className="section-head reveal">
+          <div className="eyebrow navy"><span className="dot"></span> Computer Lab Â· English</div>
+          <h2>Careers of the future<br/>
+            in <em className="serif">Mexico.</em></h2>
+          <p className="lead">
+            In Computer Lab, we built a comparative table of ten careers expected to
+            grow the most during the next decade in Mexico. For each program we mapped
+            its academic <em className="serif">area</em>, the
+            <em className="serif"> university</em> offering it, and its
+            <em className="serif"> duration in years</em>. The table shows that most
+            future-oriented careers belong to engineering, health and analytics â€” and
+            that public universities like UNAM and private ones like Tec de Monterrey
+            and AnÃ¡huac are leading the offer.
+          </p>
+        </div>
+
+        <div className="reveal" style={{
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--line)",
+          borderRadius: "var(--radius-lg)",
+          padding: 24,
+          boxShadow: "var(--shadow-md)",
+        }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 16, padding: "0 8px", flexWrap: "wrap", gap: 12,
+          }}>
+            <div>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 11,
+                letterSpacing: "0.14em", textTransform: "uppercase",
+                color: "var(--navy)",
+              }}>Activity #9 Â· Comparative Table</div>
+              <h3 style={{margin: "4px 0 0", fontFamily: "var(--font-display)", fontWeight: 400, fontSize: 22, letterSpacing: "-0.01em"}}>
+                Careers, areas, universities and duration
+              </h3>
+            </div>
+            <div style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+              color: "var(--muted)",
+            }}>Computer Lab</div>
+          </div>
+
+          <img src="assets/computerlab-tabla.png"
+               alt="Computer Lab â€” Careers of the future in Mexico (table)"
+               style={{
+                 width: "100%", height: "auto", display: "block",
+                 borderRadius: "var(--radius)",
+                 border: "1px solid var(--line)",
+                 background: "white",
+               }} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { ComputerLab });
+
+</script>
+<script type="text/babel">
+/* eslint-disable */
+/* Main app: nav + hero + integrantes + intro + topic cards */
+
+const { useState, useEffect, useRef, useMemo } = React;
+
+const SECTIONS = [
+{ id: "inicio", label: "Inicio" },
+{ id: "intro", label: "IntroducciÃ³n" },
+{ id: "psicologia", label: "PsicologÃ­a" },
+{ id: "calculo", label: "CÃ¡lculo" },
+{ id: "contabilidad", label: "Contabilidad" },
+{ id: "business", label: "Business" },
+{ id: "cambridge", label: "Cambridge" },
+{ id: "speaking", label: "Speaking" },
+{ id: "literature", label: "Literature" },
+{ id: "derecho", label: "Derecho" },
+{ id: "historia", label: "Historia" },
+{ id: "ecologia", label: "EcologÃ­a" },
+{ id: "computerlab", label: "Computer Lab" },
+{ id: "conclusion", label: "ConclusiÃ³n" }];
+
+
+const INTEGRANTES = [
+{ name: "Elina Canchola", role: "InvestigaciÃ³n" },
+{ name: "Fernanda MartÃ­nez", role: "DiseÃ±o y contenido" },
+{ name: "Renata GuillÃ©n", role: "AnÃ¡lisis" },
+{ name: "Luisa Fernanda Vives", role: "RedacciÃ³n" },
+{ name: "Gabriel FernÃ¡ndez", role: "InvestigaciÃ³n" },
+{ name: "RomÃ¡n MartÃ­nez", role: "CoordinaciÃ³n" }];
+
+
+const initials = (name) =>
+name.split(" ").slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+
+function Nav() {
+  const [active, setActive] = useState("inicio");
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY + window.innerHeight * 0.35;
+      let current = "inicio";
+      for (const s of SECTIONS) {
+        const el = document.getElementById(s.id);
+        if (el && el.offsetTop <= y) current = s.id;
+      }
+      setActive(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <nav className="nav">
+      <div className="nav-inner">
+        <a href="#inicio" className="nav-brand">
+          <span className="logo-mark" aria-hidden="true"></span>
+          <span>Carreras del Futuro</span>
+        </a>
+        <div className="nav-links">
+          {SECTIONS.slice(1).map((s) =>
+          <a key={s.id}
+          href={`#${s.id}`}
+          className={active === s.id ? "active" : ""}>{s.label}</a>
+          )}
+        </div>
+      </div>
+    </nav>);
+
+}
+
+function Hero() {
+  return (
+    <section id="inicio" className="hero">
+      <div className="container">
+        <div className="hero-grid">
+          <div className="reveal">
+            <div className="eyebrow"><span className="dot"></span> Proyecto Transversal Â· 2026</div>
+            <h1 style={{ marginTop: 18 }}>
+              Carreras del <span className="accent">Futuro</span>.
+            </h1>
+            <p className="lead">
+              Un proyecto que conecta <em className="serif">tecnologÃ­a, sociedad,
+              economÃ­a, derecho y pensamiento crÃ­tico</em> para entender los
+              trabajos que transformarÃ¡n las prÃ³ximas dÃ©cadas â€” desde la
+              Inteligencia Artificial hasta el Derecho y los Negocios.
+            </p>
+            <div className="hero-meta">
+              <div>Materias<span>10 integradas</span></div>
+              <div>Carreras<span>3 analizadas</span></div>
+              <div>Equipo<span>6 integrantes</span></div>
+            </div>
+          </div>
+
+          <div className="reveal reveal-delay-1">
+            <div className="hero-visual">
+              <div>
+                <div className="badge-row">
+                  <span className="badge">DERECHO</span>
+                  <span className="badge">ING Â· IA</span>
+                  <span className="badge">NEGOCIOS</span>
+                </div>
+              </div>
+              <h3 className="viz-title">
+                Tres disciplinas.<br />
+                Un futuro<br />
+                <em>compartido.</em>
+              </h3>
+              <div className="signal" aria-hidden="true">
+                {[0.35, 0.7, 0.5, 0.9, 0.4, 0.65, 0.3, 0.85, 0.55, 0.7, 0.4, 0.6, 0.3, 0.5, 0.75].map((v, i) =>
+                <i key={i} style={{ height: `${v * 100}%`, animationDelay: `${i * 0.12}s` }}></i>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+function Intro() {
+  return (
+    <section id="intro" className="cf-section accent-gold">
+      <div className="container">
+        <span className="section-number left">II</span>
+        <div className="section-head reveal">
+          <div className="eyebrow gold"><span className="dot"></span> IntroducciÃ³n</div>
+          <h2>El mundo del trabajo<br />
+            <em className="serif">estÃ¡ cambiando.</em></h2>
+          <p className="lead">
+            En los prÃ³ximos aÃ±os, las carreras de Derecho, IngenierÃ­a en Inteligencia
+            Artificial y Negocios evolucionarÃ¡n por tres fuerzas: avances tecnolÃ³gicos,
+            cambios sociales e innovaciÃ³n global. Esta presentaciÃ³n explora cÃ³mo esas
+            transformaciones cambiarÃ¡n el futuro de cada profesiÃ³n y su impacto en la
+            sociedad â€” conectÃ¡ndolo con las materias que cursamos este semestre.
+          </p>
+        </div>
+
+        <div className="topics-grid">
+          <a href="#derecho" className="topic law reveal">
+            <span className="glyph"></span>
+            <div>
+              <div className="num">01 / Carrera</div>
+              <h3>Derecho</h3>
+              <p>Privacidad, datos personales, telemedicina, regulaciÃ³n de IA y nuevos riesgos legales del entorno digital.</p>
+            </div>
+            <div className="arrow">Ver secciÃ³n â†’</div>
+          </a>
+
+          <a href="#contabilidad" className="topic ai reveal reveal-delay-1">
+            <span className="glyph"></span>
+            <div>
+              <div className="num">02 / Carrera</div>
+              <h3>IngenierÃ­a<br />en IA</h3>
+              <p>Sistemas inteligentes, automatizaciÃ³n y la profesiÃ³n mÃ¡s demandada de la prÃ³xima dÃ©cada.</p>
+            </div>
+            <div className="arrow">Ver secciÃ³n â†’</div>
+          </a>
+
+          <a href="#contabilidad" className="topic biz reveal reveal-delay-2">
+            <span className="glyph"></span>
+            <div>
+              <div className="num">03 / Carrera</div>
+              <h3>Negocios</h3>
+              <p>Emprendimiento, economÃ­a digital y la gestiÃ³n de empresas en un mundo cada vez mÃ¡s conectado.</p>
+            </div>
+            <div className="arrow">Ver secciÃ³n â†’</div>
+          </a>
+        </div>
+
+        {/* ImÃ¡genes principales â€” 3 slots for the carreras */}
+        <div className="reveal" style={{ marginTop: 56 }}>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "baseline",
+            marginBottom: 16
+          }}>
+            <span style={{
+              fontFamily: "var(--font-mono)", fontSize: 11,
+              letterSpacing: "0.16em", textTransform: "uppercase",
+              color: "var(--muted)"
+            }}>ImÃ¡genes principales</span>
+            <span style={{ fontSize: 12, color: "var(--muted-2)" }}>Arrastra o haz clic para subir</span>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+            <image-slot id="img-derecho" shape="rounded" radius="18"
+            placeholder="Derecho"
+            style={{ display: "block", width: "100%", aspectRatio: "3 / 4", background: "var(--bg-elevated)", border: "1px solid var(--line)" }}></image-slot>
+            <image-slot id="img-ia" shape="rounded" radius="18"
+            placeholder="IngenierÃ­a en IA"
+            style={{ display: "block", width: "100%", aspectRatio: "3 / 4", background: "var(--bg-elevated)", border: "1px solid var(--line)" }}></image-slot>
+            <image-slot id="img-negocios" shape="rounded" radius="18"
+            placeholder="Negocios"
+            style={{ display: "block", width: "100%", aspectRatio: "3 / 4", background: "var(--bg-elevated)", border: "1px solid var(--line)" }}></image-slot>
+          </div>
+        </div>
+      </div>
+    </section>);
+
+}
+
+function Integrantes() {
+  return (
+    <section className="cf-section" style={{ paddingTop: 0 }}>
+      <div className="container">
+        <div className="section-head reveal" style={{ marginBottom: 36 }}>
+          <div className="eyebrow navy"><span className="dot"></span> Equipo</div>
+          <h2 style={{ fontSize: "clamp(28px, 3.4vw, 44px)" }}>Integrantes del proyecto</h2>
+        </div>
+        <div className="team-grid">
+          {INTEGRANTES.map((m, i) =>
+          <div key={m.name} className={`member reveal reveal-delay-${i % 3 + 1}`}>
+              <div className="avatar">{initials(m.name)}</div>
+              <div>
+                <div className="name">{m.name}</div>
+                <div className="role">{m.role}</div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>);
+
+}
+
+/* Scroll reveal observer */
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+function App() {
+  useReveal();
+  return (
+    <>
+      <Nav />
+      <Hero />
+      <Integrantes />
+      <Intro />
+      <Psicologia />
+      <Calculo />
+      <Contabilidad />
+      <Business />
+      <Cambridge />
+      <Speaking />
+      <Literature />
+      <Derecho />
+      <Historia />
+      <Ecologia />
+      <ComputerLab />
+      <Conclusion />
+      <Fuentes />
+      <Footer />
+    </>);
+
+}
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div>Â© 2026 Â· Proyecto Transversal Â· Carreras del Futuro</div>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--muted-2)" }}>
+          Derecho Â· IngenierÃ­a IA Â· Negocios
+        </div>
+      </div>
+    </footer>);
+
+}
+
+Object.assign(window, { App });
+</script>
+
+<script type="text/babel">
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
+</script>
+
+</body>
+</html>
