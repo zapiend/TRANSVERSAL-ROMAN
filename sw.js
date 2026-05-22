@@ -1,4 +1,4 @@
-const CACHE = "carreras-v2";
+const CACHE = "carreras-v3";
 const ASSETS = [
   "/",
   "/index.html",
